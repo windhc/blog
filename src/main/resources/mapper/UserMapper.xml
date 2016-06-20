@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windhc.mapper.UserMapper">
+    <!--自定义返回类型  -->
+    <resultMap id="UserRole" type="User">
+        <id column="id" property="id"/>
+        <id column="username" property="username"/>
+        <id column="password" property="password"/>
+        <id column="email" property="email"/>
+        <association property="role" javaType="com.windhc.domain.Role">
+            <!-- id:关联查询用户的唯一标识
+23                 column:指定唯一标识用户信息的列
+24                 property:映射到role的那个属性
+25             -->
+             <id column="role_id" property="id"/>
+             <result column="name" property="name"/>
+         </association>
+    </resultMap>
+
+
+    <select id="findById" resultType="User">
+        select * from user where id=#{id}
+    </select>
+
+    <select id="findUserAndRole" resultMap="UserRole">
+        select * from user, role where user.id=#{id} and user.role_id=role.id
+    </select>
+</mapper>
