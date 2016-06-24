@@ -8,7 +8,7 @@ ChartApp.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/chart/src/html/chart.html',
             controller: 'ChartCtrl'
         }).when('/atlas/:id/edit', {
-            templateUrl: '/view/atlas/edit.html',
+            templateUrl: '/views/atlas/edit.html',
             controller: 'AtlasEditController'
         }).otherwise({redirectTo: '/chart/index'});
 }]);
