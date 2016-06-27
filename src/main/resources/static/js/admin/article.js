@@ -8,13 +8,13 @@ var BlogApp = require('./app.js');
 BlogApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/article', {
-            templateUrl: '/views/admin/article/index.html',
+            templateUrl: '/admin/article/index.html',
             controller: 'ArticleCtrl'
         }).when('/article/:id/edit', {
-            templateUrl: '/views/admin/article/edit.html',
+            templateUrl: '/admin/article/edit.html',
             controller: 'ArticleEditCtrl'
         }).when('/article/:id/detail', {
-            templateUrl: '/views/admin/article/detail.html',
+            templateUrl: '/admin/article/detail.html',
             controller: 'ArticleDetailCtrl'
         }).otherwise({redirectTo: '/article'});
 }]);

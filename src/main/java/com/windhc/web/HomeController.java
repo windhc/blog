@@ -13,17 +13,17 @@ public class HomeController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String home() {
-    return "/views/index.html";
+    return "/index.html";
   }
 
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   public String login() {
-    return "/views/admin/login.html";
+    return "/admin/login.html";
   }
 
   @RequestMapping(value = "/admin", method = RequestMethod.GET)
   public String admin() {
-    return "/views/admin/main.html";
+    return "/admin/main.html";
   }
 
 }

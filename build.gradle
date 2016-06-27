@@ -29,8 +29,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-cache')
 	compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
+	compile("org.apache.shiro:shiro-core:1.2.5")
 	compile("org.apache.shiro:shiro-web:1.2.5")
 	compile("org.apache.shiro:shiro-spring:1.2.5")
+	compile("org.apache.shiro:shiro-ehcache:1.2.5")
     compile("mysql:mysql-connector-java")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
