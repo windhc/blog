@@ -1,8 +1,11 @@
 /**
  * Created by Administrator on 2015/8/8.
  */
+'use strict';
 
-ChartApp.config(['$routeProvider', function ($routeProvider) {
+var BlogApp = require('./app.js');
+
+BlogApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/chart/index', {
             templateUrl: '/chart/src/html/chart.html',
@@ -13,7 +16,7 @@ ChartApp.config(['$routeProvider', function ($routeProvider) {
         }).otherwise({redirectTo: '/chart/index'});
 }]);
 
-ChartApp.service('UserService', ['$http',
+BlogApp.service('UserService', ['$http',
     function ($http) {
         return {
             getPage: function () {

@@ -1,6 +1,8 @@
 /**
  * Created by Administrator on 2015/9/13.
  */
+'use strict';
+
 angular.module('chart.fund', ['highcharts-ng'])
 
     .controller('ChartCtrl', ['$scope',

@@ -34,9 +34,9 @@ var qiniu = {
 
 //使用webpack来合并js
 gulp.task('js', function () {
-    gulp.src('./js')
+    gulp.src('./js/admin')
         .pipe(webpack(config))
-        .pipe(gulp.dest('./build'));
+        .pipe(gulp.dest('./js/build'));
 });
 
 //合并CSS
