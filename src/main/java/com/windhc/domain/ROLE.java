@@ -5,15 +5,15 @@ package com.windhc.domain;
  */
 public class Role {
 
-  private long id;
+  private long roleId;
   private String name;
 
-  public long getId() {
-    return id;
+  public long getRoleId() {
+    return roleId;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setRoleId(long roleId) {
+    this.roleId = roleId;
   }
 
   public String getName() {

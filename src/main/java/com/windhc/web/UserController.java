@@ -19,7 +19,12 @@ public class UserController {
 
   @RequestMapping(method = RequestMethod.GET, value = "/test")
   public User test() {
-    return userService.getOne(1);
+    return userService.findOne(1);
+  }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/login")
+  public String login() {
+    return "success";
   }
 
 }

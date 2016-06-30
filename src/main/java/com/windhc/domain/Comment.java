@@ -8,7 +8,7 @@ import java.time.Instant;
  */
 public class Comment {
 
-  private long id;
+  private long commentId;
   private String content;
   private String ip;
   private String username;
@@ -18,12 +18,12 @@ public class Comment {
   private boolean deleted = false;
   private Article article;
 
-  public long getId() {
-    return id;
+  public long getCommentId() {
+    return commentId;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setCommentId(long commentId) {
+    this.commentId = commentId;
   }
 
   public String getContent() {

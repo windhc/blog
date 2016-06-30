@@ -7,5 +7,7 @@ import com.windhc.domain.User;
  */
 public interface UserService {
 
-  User getOne(long id);
+  User findOne(long id);
+
+  User findByUsername(String username);
 }

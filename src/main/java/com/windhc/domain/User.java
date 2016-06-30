@@ -11,7 +11,7 @@ public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private long id;
+  private long userId;
   private String username;
   @JsonIgnore
   private String password;
@@ -19,12 +19,12 @@ public class User implements Serializable {
 
   private Role role;
 
-  public long getId() {
-    return id;
+  public long getUserId() {
+    return userId;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setUserId(long userId) {
+    this.userId = userId;
   }
 
   public String getUsername() {

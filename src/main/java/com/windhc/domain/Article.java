@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Article {
 
-  private long id;
+  private long articleId;
   private String title;
   private String content;
-  private Constants.ArticleStatus articleStatus;
+  private Constants.ArticleStatus status;
   private long createTime = Instant.now().toEpochMilli();
   private boolean deleted = false;
 
@@ -21,12 +21,20 @@ public class Article {
   private User user;
   private List<Comment> comments;
 
-  public long getId() {
-    return id;
+  public long getArticleId() {
+    return articleId;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setArticleId(long articleId) {
+    this.articleId = articleId;
+  }
+
+  public Constants.ArticleStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(Constants.ArticleStatus status) {
+    this.status = status;
   }
 
   public String getTitle() {

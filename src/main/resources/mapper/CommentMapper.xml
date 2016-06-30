@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windhc.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.windhc.domain.Comment">
+    <id column="commentId" jdbcType="INTEGER" property="commentId" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="commentCreateTime" jdbcType="BIGINT" property="createTime" />
+    <result column="commentDeleted" jdbcType="BIT" property="deleted" />
+    <result column="article_id" jdbcType="INTEGER" property="article.articleId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.windhc.domain.Comment">
+    <result column="commentContent" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    commentId, ip, username, email, commentCreateTime, commentDeleted, article_id
+  </sql>
+  <sql id="Blob_Column_List">
+    commentContent
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+    where commentId = #{commentId,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment
+    where commentId = #{commentId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.windhc.domain.Comment">
+    insert into comment (commentId, ip, username, 
+      email, commentCreateTime, commentDeleted, 
+      article_id, commentContent)
+    values (#{commentId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, #{deleted,jdbcType=BIT},
+      #{article.articleId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.windhc.domain.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        commentId,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="createTime != null">
+        commentCreateTime,
+      </if>
+      <if test="deleted != null">
+        commentDeleted,
+      </if>
+      <if test="article != null">
+        article_id,
+      </if>
+      <if test="content != null">
+        commentContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="article != null">
+        #{article.articleId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.windhc.domain.Comment">
+    update comment
+    <set>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        commentCreateTime = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        commentDeleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="article != null">
+        article_id = #{article.articleId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        commentContent = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where commentId = #{commentId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.windhc.domain.Comment">
+    update comment
+    set ip = #{ip,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      commentCreateTime = #{createTime,jdbcType=BIGINT},
+      commentDeleted = #{deleted,jdbcType=BIT},
+      article_id = #{article.articleId,jdbcType=INTEGER},
+      commentContent = #{content,jdbcType=LONGVARCHAR}
+    where commentId = #{commentId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.windhc.domain.Comment">
+    update comment
+    set ip = #{ip,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      commentCreateTime = #{createTime,jdbcType=BIGINT},
+      commentDeleted = #{deleted,jdbcType=BIT},
+      article_id = #{article.articleId,jdbcType=INTEGER}
+    where commentId = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

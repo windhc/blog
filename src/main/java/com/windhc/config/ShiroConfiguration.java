@@ -1,5 +1,7 @@
 package com.windhc.config;
 
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -18,13 +20,33 @@ import java.util.Map;
 @Configuration
 public class ShiroConfiguration {
 
-  private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
+  private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+
+
+//  <bean id="customerRealm" class="com. test.security.CustomerRealm">
+//    <property name="credentialsMatcher">
+//      <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+//        <property name="hashAlgorithmName" value="MD5" />
+//      </bean>
+//    </property>
+//  </bean>
+
+  // 密码使用的加密方式
+  @Bean
+  public CredentialsMatcher getCredentialsMatcher() {
+    HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+    credentialsMatcher.setHashAlgorithmName("MD5");
+    return credentialsMatcher;
+  }
 
   @Bean(name = "ShiroRealmImpl")
   public ShiroRealmImpl getShiroRealm() {
-    return new ShiroRealmImpl();
+    ShiroRealmImpl shiroRealm = new ShiroRealmImpl();
+    shiroRealm.setCredentialsMatcher(getCredentialsMatcher());
+    return shiroRealm;
   }
 
+  // 用户授权/认证信息Cache, 采用EhCache 缓存
   @Bean(name = "shiroEhcacheManager")
   public EhCacheManager getEhCacheManager() {
     EhCacheManager em = new EhCacheManager();
@@ -32,6 +54,7 @@ public class ShiroConfiguration {
     return em;
   }
 
+  // 保证实现了Shiro内部lifecycle函数的bean执行
   @Bean(name = "lifecycleBeanPostProcessor")
   public LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
     return new LifecycleBeanPostProcessor();
@@ -52,6 +75,7 @@ public class ShiroConfiguration {
     return dwsm;
   }
 
+  // 开启shiro注解支持
   @Bean
   public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
     AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
@@ -62,16 +86,18 @@ public class ShiroConfiguration {
   @Bean(name = "shiroFilter")
   public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
     ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-    shiroFilterFactoryBean
-        .setSecurityManager(getDefaultWebSecurityManager());
+    shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
     shiroFilterFactoryBean.setLoginUrl("/login");
     shiroFilterFactoryBean.setSuccessUrl("/admin");
+    shiroFilterFactoryBean.setUnauthorizedUrl("/forbidden");
+
+    filterChainDefinitionMap.put("/logout", "logout");
     filterChainDefinitionMap.put("/js/**", "anon");
     filterChainDefinitionMap.put("/css/**", "anon");
     filterChainDefinitionMap.put("/images/**", "anon");
+    filterChainDefinitionMap.put("/user/**", "anon");
     filterChainDefinitionMap.put("/**", "authc");
-    shiroFilterFactoryBean
-        .setFilterChainDefinitionMap(filterChainDefinitionMap);
+    shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     return shiroFilterFactoryBean;
   }
 }

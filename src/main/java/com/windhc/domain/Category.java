@@ -5,22 +5,22 @@ package com.windhc.domain;
  */
 public class Category {
 
-  private long id;
-  private String name;
+  private long categoryId;
+  private String categoryName;
 
-  public long getId() {
-    return id;
+  public long getCategoryId() {
+    return categoryId;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setCategoryId(long categoryId) {
+    this.categoryId = categoryId;
   }
 
-  public String getName() {
-    return name;
+  public String getCategoryName() {
+    return categoryName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCategoryName(String categoryName) {
+    this.categoryName = categoryName;
   }
 }
