@@ -1,12 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-admin-article-index
-<a href="#/article/1/edit">edit</a>
-<a href="#/article/1/detail">detail</a>
-</body>
-</html>
+<!--Begin:breadcrumb -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><strong>全部蜜蜂少女</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+<!--End:breadcrumb -->
+<!--Begin:Content -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div id="roleList" class="ibox-title">
+                    <h5 id="roleElements">5篇文章</h5>
+                    <div class="ibox-content">
+
+                        <div class="my-box">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="">搜索：</label>
+                                    <input type="text" class="form-control" ng-model="search.keyword"
+                                           ng-enter="searchByKeyword()" placeholder="标题\内容">
+                                </div>
+                                <a class="btn btn-default" ng-click="searchByKeyword()"
+                                   ng-disabled="!search.keyword"><span class="glyphicon glyphicon-search"></span></a>
+                                <a class="btn btn-default" ng-click="getAll()"><span
+                                        class="glyphicon glyphicon-refresh"></span></a>
+                            </form>
+                        </div>
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>体重</th>
+                                <th>推蜜昵称</th>
+                                <th>推蜜看好数</th>
+                                <th>入队时间</th>
+                                <th>加入推蜜时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" ng-repeat="girl in girls">
+                                <td><a ng-href="#/lady/{{girl.id}}/detail" class="tableLink" ng-bind="girl.name"></a>
+                                </td>
+                                <td ng-bind="girl.weight"></td>
+                                <td ng-bind="girl.tweeMeeNickname"></td>
+                                <td ng-bind="girl.fans"></td>
+                                <td ng-bind="girl.enTeamTime | trim | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                                <td ng-bind="girl.enTweeMeeTime | trim | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                                <td><a class="btn btn-success btn-xs" ng-href="#/lady/{{girl.id}}/edit"
+                                       ng-if="entityUpdate">编辑</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="btn-group pagin" id="pagin_1">
+                            <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize"
+                                            class="pagination-sm" boundary-links="true" num-pages="numPages"
+                                            ng-change="pageChanged()" items-per-page="pageSize"
+                                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                            last-text="&raquo;"></uib-pagination>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End:Content -->
+<style>
+    .my-box {
+        border: solid 1px #e7eaec;
+        padding: 15px 15px;
+        margin-bottom: 15px;
+    }
+</style>

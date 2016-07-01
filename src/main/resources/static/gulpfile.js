@@ -65,7 +65,7 @@ gulp.task('publish-js', function () {
 gulp.task('publish-css', function () {
     return gulp.src(['./css/main.css', './css/view.css'])
         .pipe(concat('app.css'))    //合并
-        .pipe(cssnano())   //压缩
+        .pipe(cssnano())   //CSS压缩
         .pipe(rev())      //MD5戳
         .pipe(gulp.dest('./build'))
         .pipe(qn({
@@ -96,6 +96,6 @@ gulp.task('publish', function (callback) {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./css/*.css', ['css']);
-    gulp.watch('./js/*.js', ['js']);
+    //gulp.watch('./css/*.css', ['css']);
+    gulp.watch('./js/admin/*.js', ['js']);
 });

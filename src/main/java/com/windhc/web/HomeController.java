@@ -16,7 +16,7 @@ public class HomeController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String home() {
-    return "/index.html";
+    return "/front/index.html";
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/login")

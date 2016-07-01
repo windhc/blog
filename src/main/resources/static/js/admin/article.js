@@ -33,6 +33,9 @@ BlogApp.service('ArticleService', ['$http',
             },
             getOne: function (id) {
                 return $http.get("/article/" + id);
+            },
+            listArticle: function (params) {
+                return $http.get("/article?" + params);
             }
         };
     }

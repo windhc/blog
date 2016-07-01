@@ -4,7 +4,7 @@
 'use strict';
 
 module.exports = {
-    devtool: "source-map",   //执行gulp的publish任务时,需注释此行
+    devtool: "source-map",   //执行gulp的的压缩JS任务时,需注释此行
     entry: "./js/admin/main.js",
     output: {
         path: __dirname + "/js/build",

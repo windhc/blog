@@ -22,15 +22,6 @@ public class ShiroConfiguration {
 
   private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
-
-//  <bean id="customerRealm" class="com. test.security.CustomerRealm">
-//    <property name="credentialsMatcher">
-//      <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-//        <property name="hashAlgorithmName" value="MD5" />
-//      </bean>
-//    </property>
-//  </bean>
-
   // 密码使用的加密方式
   @Bean
   public CredentialsMatcher getCredentialsMatcher() {
@@ -67,20 +58,20 @@ public class ShiroConfiguration {
     return daap;
   }
 
-  @Bean(name = "securityManager")
-  public DefaultWebSecurityManager getDefaultWebSecurityManager() {
-    DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
-    dwsm.setRealm(getShiroRealm());
-    dwsm.setCacheManager(getEhCacheManager());
-    return dwsm;
-  }
-
   // 开启shiro注解支持
   @Bean
   public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
     AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
     aasa.setSecurityManager(getDefaultWebSecurityManager());
     return new AuthorizationAttributeSourceAdvisor();
+  }
+
+  @Bean(name = "securityManager")
+  public DefaultWebSecurityManager getDefaultWebSecurityManager() {
+    DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
+    dwsm.setRealm(getShiroRealm());
+    dwsm.setCacheManager(getEhCacheManager());
+    return dwsm;
   }
 
   @Bean(name = "shiroFilter")
@@ -92,10 +83,10 @@ public class ShiroConfiguration {
     shiroFilterFactoryBean.setUnauthorizedUrl("/forbidden");
 
     filterChainDefinitionMap.put("/logout", "logout");
+    filterChainDefinitionMap.put("/", "anon");
     filterChainDefinitionMap.put("/js/**", "anon");
     filterChainDefinitionMap.put("/css/**", "anon");
     filterChainDefinitionMap.put("/images/**", "anon");
-    filterChainDefinitionMap.put("/user/**", "anon");
     filterChainDefinitionMap.put("/**", "authc");
     shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     return shiroFilterFactoryBean;

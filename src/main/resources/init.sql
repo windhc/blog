@@ -65,3 +65,14 @@ insert into role (roleName) values ('guest');
 
 insert into user (username, password, email, role_id) values ('admin', md5('admin'), '123@qq.com', 1);
 
+INSERT INTO category (categoryName) VALUES ('技术');
+INSERT INTO category (categoryName) VALUES ('生活');
+
+INSERT INTO article (title, articleContent, status, articleCreateTime, articleDeleted, category_id, user_id)
+VALUES ('Springboot的使用','Springboot快速构建微服务，具有极大的优势，免去诸多繁琐的配置','Draft', 1467368721000 , 0 , 1, 1);
+INSERT INTO article (title, articleContent, status, articleCreateTime, articleDeleted, category_id, user_id)
+VALUES ('ELK数据分析','ELK由三个开源组件构建，天生支持分布式扩展','Publish', 1467368721000 , 0 , 1, 1);
+
+INSERT INTO comment (commentContent, ip, username, email, commentCreateTime, commentDeleted, article_id)
+VALUES ('写的很不错', '192.168.1.1', 'woshitest', '1111@qq.com', 1467368721000, 0, 1);
+

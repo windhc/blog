@@ -5,7 +5,7 @@
     <id column="articleId" jdbcType="INTEGER" property="articleId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="articleCreateTime" jdbcType="BIGINT" property="createtime" />
+    <result column="articleCreateTime" jdbcType="BIGINT" property="createTime" />
     <result column="articleDeleted" jdbcType="BIT" property="deleted" />
     <result column="category_id" jdbcType="INTEGER" property="category.categoryId" />
     <result column="user_id" jdbcType="INTEGER" property="user.userId" />
@@ -21,7 +21,7 @@
     articleContent
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectById" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -30,7 +30,7 @@
     where articleId = #{articleId,jdbcType=INTEGER}
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteById" parameterType="java.lang.Long">
     delete from article
     where articleId = #{articleid,jdbcType=INTEGER}
   </delete>

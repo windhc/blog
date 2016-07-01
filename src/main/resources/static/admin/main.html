@@ -1,74 +1,66 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
-
-    <title>MAIN</title>
-
-    <!-- Bootstrap core CSS -->
+    <!-- Page title set in pageTitle directive -->
+    <title page-title>文章后台</title>
+    <!-- Font awesome -->
+    <link href="/js/plugins/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap and Fonts -->
     <link href="/js/plugins/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/css/dashboard.css" rel="stylesheet">
+    <!-- Main Inspinia CSS files -->
+    <link href="/css/animate.css" rel="stylesheet">
+    <link id="loadBefore" href="css/style.css" rel="stylesheet">
+
 </head>
 
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
 <body ng-app="BlogApp">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"-->
-                    <!--aria-expanded="false" aria-controls="navbar">-->
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <!--<span class="icon-bar">111</span>-->
-                <!--<span class="icon-bar">11</span>-->
-                <!--<span class="icon-bar">11</span>-->
-            <!--</button>-->
-            <a class="navbar-brand" href="#">Project name</a>
+    <!-- Wrapper-->
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <div ng-include="'/admin/common/navigation.html'"></div>
+
+        <!-- Page wraper -->
+        <!-- ng-class with current state name give you the ability to extended customization your view -->
+        <div id="page-wrapper" class="gray-bg">
+
+            <!-- Page wrapper -->
+            <div ng-include="'/admin/common/topnavbar.html'"></div>
+
+            <!-- Main view  -->
+            <div ng-view></div>
+
+            <!-- Footer -->
+            <div ng-include="'/admin/common/footer.html'"></div>
+
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="/logout">退出登陆</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
-        </div>
+        <!-- End page wrapper-->
+
     </div>
-</nav>
+    <!-- End wrapper-->
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#/article">文章管理 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">文章分类</a></li>
-                <li><a href="#">评论管理</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="#">用户管理</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
-    </div>
-</div>
+    <!-- jQuery and Bootstrap -->
+    <script src="/js/plugins/jquery.min.js"></script>
+    <script src="/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <!-- MetsiMenu -->
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <!-- SlimScroll -->
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Peace JS -->
+    <script src="/js/plugins/pace/pace.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="/js/plugins/inspinia.js"></script>
+    <!-- Main Angular scripts-->
+    <script src="/js/plugins/angular-1.3.15/angular.min.js"></script>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="/js/plugins/jquery.min.js"></script>
-<script src="/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-
-<script src="/js/build/app.bundle.js"></script>
+    <script src="/js/build/app.bundle.js"></script>
 
 </body>
 </html>
