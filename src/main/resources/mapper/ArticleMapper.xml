@@ -30,6 +30,12 @@
     where articleId = #{articleId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectAll" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    from article
+  </select>
+
   <delete id="deleteById" parameterType="java.lang.Long">
     delete from article
     where articleId = #{articleid,jdbcType=INTEGER}

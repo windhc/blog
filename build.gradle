@@ -35,5 +35,6 @@ dependencies {
 	compile("org.apache.shiro:shiro-spring:1.2.5")
 	compile("org.apache.shiro:shiro-ehcache:1.2.5")
     compile("mysql:mysql-connector-java")
+    compile("com.github.pagehelper:pagehelper:4.1.6")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -1,6 +1,8 @@
 package com.windhc.service;
 
+import com.github.pagehelper.PageInfo;
 import com.windhc.domain.Article;
+import com.windhc.utils.PageRequest;
 
 /**
  * Created by HC on 2016/6/19.
@@ -8,4 +10,6 @@ import com.windhc.domain.Article;
 public interface ArticleService {
 
   Article findById(long id);
+
+  PageInfo findAll(PageRequest pageRequest);
 }

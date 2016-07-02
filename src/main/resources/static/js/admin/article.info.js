@@ -6,27 +6,30 @@
 var BlogApp = require('./app.js');
 
 BlogApp
-    .controller('ArticleCtrl', ['$scope', 'ArticleService',
-        function($scope, ArticleService) {
-            ArticleService.getOne(1).success(function (data) {
-                $scope.article = data.data;
-            });
+    .controller('ArticleCtrl', ['$scope', 'ArticleService', 'CommonService',
+        function($scope, ArticleService, CommonService) {
 
             $scope.totalItems = 0;
             $scope.currentPage = 1;
             $scope.maxSize = 5;
             $scope.pageSize = 10 ;   //每页大小
             function getPageData() {
-                $scope.params = "size="+$scope.pageSize+"&page="+($scope.currentPage-1);
+                $scope.params = "pageSize="+$scope.pageSize+"&pageNum="+($scope.currentPage);
                 ArticleService.listArticle($scope.params).success(function (data) {
-                    $scope.articles = data.data.content;
-                    $scope.totalItems = data.data.totalElements;
+                    $scope.articles = data.data.list;
+                    $scope.totalItems = data.data.total;
                 });
             }
             getPageData();
             $scope.pageChanged = function() {
                 getPageData();
-                console.log('Page changed to: ' + $scope.currentPage);
+            };
+            $scope.delete = function (id) {
+                CommonService.confirm("确定删除？", function () {
+                    ArticleService.delete(id).success(function (data) {
+                        CommonService.show(data);
+                    })
+                })
             };
         }
     ])

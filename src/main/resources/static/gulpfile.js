@@ -41,7 +41,10 @@ gulp.task('js', function () {
 
 //合并CSS
 gulp.task('css', function () {
-    gulp.src(['./css/main.css', './css/view.css'])
+    gulp.src([
+        './css/main.css',
+        './css/view.css'
+    ])
         .pipe(concat('app.css'))
         .pipe(gulp.dest('./build'));
 });
