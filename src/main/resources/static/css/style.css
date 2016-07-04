@@ -8225,3 +8225,9 @@ body.md-skin {
     margin: 0;
   }
 }
+
+.my-box {
+    border: solid 1px #e7eaec;
+    padding: 15px 15px;
+    margin-bottom: 15px;
+}

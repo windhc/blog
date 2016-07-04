@@ -4,7 +4,7 @@
         <h2></h2>
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li class="active"><strong>全部蜜蜂少女</strong></li>
+            <li class="active"><strong>全部文章</strong></li>
         </ol>
     </div>
     <div class="col-lg-2"></div>
@@ -16,8 +16,10 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>5篇文章</h5>
-                    <div class="ibox-tools"></div>
+                    <h5>{{totalItems}}篇文章</h5>
+                    <div class="ibox-tools">
+                        <a href="#/article/add" class="btn btn-primary btn-xs">添加</a>
+                    </div>
                 </div>
                 <div class="ibox-content">
                     <div class="my-box">
@@ -75,10 +77,3 @@
     </div>
 </div>
 <!--End:Content -->
-<style>
-    .my-box {
-        border: solid 1px #e7eaec;
-        padding: 15px 15px;
-        margin-bottom: 15px;
-    }
-</style>

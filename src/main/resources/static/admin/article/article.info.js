@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var BlogApp = require('./app.js');
+var BlogApp = require('../../js/admin/app.js');
 
 BlogApp
     .controller('ArticleCtrl', ['$scope', 'ArticleService', 'CommonService',
@@ -31,6 +31,13 @@ BlogApp
                     })
                 })
             };
+        }
+    ])
+    .controller('ArticleAddCtrl', ['$scope', 'ArticleService',
+        function($scope, ArticleService) {
+            ArticleService.allCategory().success(function (data) {
+                $scope.categories = data.data;
+            })
         }
     ])
     .controller('ArticleEditCtrl', ['$scope', function($scope) {

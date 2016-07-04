@@ -3,19 +3,25 @@
  */
 'use strict';
 
-var BlogApp = require('./app.js');
+var BlogApp = require('../../js/admin/app.js');
 
 BlogApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/article', {
             templateUrl: '/admin/article/index.html',
             controller: 'ArticleCtrl'
+        }).when('/article/add', {
+            templateUrl: '/admin/article/add.html',
+            controller: 'ArticleAddCtrl'
         }).when('/article/:id/edit', {
             templateUrl: '/admin/article/edit.html',
             controller: 'ArticleEditCtrl'
         }).when('/article/:id/detail', {
             templateUrl: '/admin/article/detail.html',
             controller: 'ArticleDetailCtrl'
+        }).when('/category', {
+            templateUrl: '/admin/category/index.html',
+            controller: 'CategoryCtrl'
         }).otherwise({redirectTo: '/article'});
 }]);
 
@@ -36,6 +42,18 @@ BlogApp.service('ArticleService', ['$http',
             },
             listArticle: function (params) {
                 return $http.get("/article?" + params);
+            },
+            listCategory: function (params) {
+                return $http.get("/category?" + params);
+            },
+            saveCategory: function (category) {
+                return $http.post("/category", category);
+            },
+            deleteCategory: function (id) {
+                return $http.delete("/category/" + id);
+            },
+            allCategory: function () {
+                return $http.get("/category/all");
             }
         };
     }

@@ -30,7 +30,7 @@
     where articleId = #{articleId,jdbcType=INTEGER}
   </select>
 
-  <select id="selectAll" resultMap="ResultMapWithBLOBs">
+  <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from article
@@ -106,7 +106,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.windhc.domain.Article">
+  <update id="updateByIdSelective" parameterType="com.windhc.domain.Article">
     update article
     <set>
       <if test="title != null">
@@ -134,7 +134,7 @@
     where articleId = #{articleId,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.windhc.domain.Article">
+  <update id="updateByIdWithBLOBs" parameterType="com.windhc.domain.Article">
     update article
     set title = #{title,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
@@ -146,7 +146,7 @@
     where articleId = #{articleId,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.windhc.domain.Article">
+  <update id="updateById" parameterType="com.windhc.domain.Article">
     update article
     set title = #{title,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},

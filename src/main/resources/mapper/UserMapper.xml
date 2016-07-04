@@ -23,7 +23,7 @@
         userId, username, password, email
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from user
@@ -38,7 +38,7 @@
         select * from user, role where user.username=#{username} and user.role_id=role.roleId
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteById" parameterType="java.lang.Integer">
         delete from user
         where userId = #{userId,jdbcType=INTEGER}
     </delete>
@@ -88,7 +88,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.windhc.domain.User">
+    <update id="updateByIdSelective" parameterType="com.windhc.domain.User">
         update user
         <set>
             <if test="username != null">
@@ -107,7 +107,7 @@
         where userId = #{userId,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKey" parameterType="com.windhc.domain.User">
+    <update id="updateById" parameterType="com.windhc.domain.User">
         update user
         set username = #{username,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},

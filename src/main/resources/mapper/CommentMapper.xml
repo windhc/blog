@@ -21,7 +21,7 @@
     commentContent
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -30,7 +30,7 @@
     where commentId = #{commentId,jdbcType=INTEGER}
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteById" parameterType="java.lang.Integer">
     delete from comment
     where commentId = #{commentId,jdbcType=INTEGER}
   </delete>
@@ -100,7 +100,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.windhc.domain.Comment">
+  <update id="updateByIdSelective" parameterType="com.windhc.domain.Comment">
     update comment
     <set>
       <if test="ip != null">
@@ -128,7 +128,7 @@
     where commentId = #{commentId,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.windhc.domain.Comment">
+  <update id="updateByIdWithBLOBs" parameterType="com.windhc.domain.Comment">
     update comment
     set ip = #{ip,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
@@ -140,7 +140,7 @@
     where commentId = #{commentId,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.windhc.domain.Comment">
+  <update id="updateById" parameterType="com.windhc.domain.Comment">
     update comment
     set ip = #{ip,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},

@@ -30,7 +30,6 @@ public class ArticleServiceImpl implements ArticleService {
     PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
     List<Article> articles = articleMapper.selectAll();
     //用PageInfo对结果进行包装
-    PageInfo page = new PageInfo(articles);
-    return page;
+    return new PageInfo(articles);
   }
 }

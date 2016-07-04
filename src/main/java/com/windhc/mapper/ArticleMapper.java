@@ -11,8 +11,19 @@ import java.util.List;
 @Mapper
 public interface ArticleMapper {
 
+  int insert(Article record);
+
+  int insertSelective(Article record);
+
+  int deleteById(long articleid);
+
+  int updateByIdSelective(Article record);
+
+  int updateByIdWithBLOBs(Article record);
+
+  int updateById(Article record);
+
   Article selectById(long id);
 
   List<Article> selectAll();
-
 }

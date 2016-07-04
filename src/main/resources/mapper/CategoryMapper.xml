@@ -10,21 +10,27 @@
     categoryId, categoryName
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from category
     where categoryId = #{categoryId,jdbcType=INTEGER}
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from category
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long">
     delete from category
     where categoryId = #{categoryId,jdbcType=INTEGER}
   </delete>
 
   <insert id="insert" parameterType="com.windhc.domain.Category">
-    insert into category (categoryId, categoryName)
-    values (#{categoryId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR})
+    insert into category (categoryName)
+    values (#{categoryName,jdbcType=VARCHAR})
   </insert>
 
   <insert id="insertSelective" parameterType="com.windhc.domain.Category">
@@ -47,7 +53,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.windhc.domain.Category">
+  <update id="updateByIdSelective" parameterType="com.windhc.domain.Category">
     update category
     <set>
       <if test="categoryName != null">
@@ -57,7 +63,7 @@
     where categoryId = #{categoryId,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.windhc.domain.Category">
+  <update id="updateById" parameterType="com.windhc.domain.Category">
     update category
     set categoryName = #{categoryName,jdbcType=VARCHAR}
     where categoryId = #{categoryId,jdbcType=INTEGER}

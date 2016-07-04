@@ -4,8 +4,9 @@
 require('./common.js');
 require('./directives.js');
 
-require('./article.js');
-require('./article.info.js');
+require('../../admin/article/article.js');
+require('../../admin/article/article.info.js');
+require('../../admin/category/article.category.js');
 
 //require('./Service');
 //require('./Directive');

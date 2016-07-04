@@ -34,7 +34,7 @@ var qiniu = {
 
 //使用webpack来合并js
 gulp.task('js', function () {
-    gulp.src('./js/admin')
+    gulp.src(['./js/admin', './admin/**/*.js'])
         .pipe(webpack(config))
         .pipe(gulp.dest('./js/build'));
 });
@@ -100,5 +100,5 @@ gulp.task('publish', function (callback) {
 
 gulp.task('watch', function () {
     //gulp.watch('./css/*.css', ['css']);
-    gulp.watch('./js/admin/*.js', ['js']);
+    gulp.watch(['./js/admin/*.js', './admin/**/*.js'], ['js']);
 });
