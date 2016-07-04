@@ -100,7 +100,7 @@ BlogApp
             };
         }
     ])
-    .controller('HeadCtrl', ["$scope", "$http",
+    .controller('NavCtrl', ["$scope", "$http",
         function ($scope, $http) {
             $http.get("/user/info").success(function (data) {
                 $scope.info = data;

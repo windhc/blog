@@ -7,10 +7,10 @@
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="email" jdbcType="VARCHAR" property="email" />
-        <!--<result column="role_id" jdbcType="INTEGER" property="roleId" />-->
+        <result column="role_id" jdbcType="INTEGER" property="role.roleId" />
     </resultMap>
 
-    <resultMap id="UserRoleMap" type="User">
+    <resultMap id="UserRoleMap" type="com.windhc.domain.User">
         <id column="userId" property="userId"/>
         <id column="username" property="username"/>
         <id column="password" property="password"/>

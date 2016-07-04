@@ -28,16 +28,24 @@ BlogApp
                 CommonService.confirm("确定删除？", function () {
                     ArticleService.delete(id).success(function (data) {
                         CommonService.show(data);
+                        getPageData();
                     })
                 })
             };
         }
     ])
-    .controller('ArticleAddCtrl', ['$scope', 'ArticleService',
-        function($scope, ArticleService) {
+    .controller('ArticleAddCtrl', ['$scope', '$location', 'ArticleService', 'CommonService',
+        function($scope, $location, ArticleService, CommonService) {
             ArticleService.allCategory().success(function (data) {
                 $scope.categories = data.data;
-            })
+            });
+
+            $scope.add = function () {
+                ArticleService.save($scope.article).success(function (data) {
+                    CommonService.show(data);
+                    $location.path('/article');
+                })
+            }
         }
     ])
     .controller('ArticleEditCtrl', ['$scope', function($scope) {

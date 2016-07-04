@@ -2,9 +2,11 @@ package com.windhc.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.windhc.config.Constants;
 import com.windhc.domain.Article;
 import com.windhc.mapper.ArticleMapper;
 import com.windhc.service.ArticleService;
+import com.windhc.utils.BaseUtils;
 import com.windhc.utils.PageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +30,22 @@ public class ArticleServiceImpl implements ArticleService {
   @Override
   public PageInfo findAll(PageRequest pageRequest) {
     PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
-    List<Article> articles = articleMapper.selectAll();
+    List<Article> articles = articleMapper.selectAllByDeleted(false);
     //用PageInfo对结果进行包装
     return new PageInfo(articles);
+  }
+
+  @Override
+  public int save(Article article) {
+    article.setStatus(Constants.ArticleStatus.Publish);
+    article.setUser(BaseUtils.currentUser());
+    return articleMapper.insert(article);
+  }
+
+  @Override
+  public int updateToDeleted(long id) {
+    Article article = articleMapper.selectById(id);
+    article.setDeleted(true);
+    return articleMapper.updateById(article);
   }
 }

@@ -29,7 +29,6 @@ BlogApp
                     ArticleService.deleteCategory(id).success(function (data) {
                         CommonService.show(data);
                         getPageData();
-
                     })
                 })
             };

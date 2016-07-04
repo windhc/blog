@@ -3,7 +3,7 @@
     <div class="col-lg-10">
         <h2></h2>
         <ol class="breadcrumb">
-            <li><a href="/">Home</a></li>
+            <li><a href="/admin">Home</a></li>
             <li class="active"><strong>全部文章</strong></li>
         </ol>
     </div>
@@ -42,6 +42,7 @@
                         <tr>
                             <th>ID</th>
                             <th>标题</th>
+                            <th>分类</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>
@@ -53,6 +54,7 @@
                                 <a ng-href="#/article/{{article.articleId}}/detail" class="tableLink"
                                    ng-bind="article.title"></a>
                             </td>
+                            <td ng-bind="article.category.categoryName"></td>
                             <td ng-bind="article.createTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
                             <td>
                                 <a ng-href="#/article/{{article.articleId}}/edit">编辑</a>

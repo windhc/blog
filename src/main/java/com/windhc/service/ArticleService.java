@@ -12,4 +12,8 @@ public interface ArticleService {
   Article findById(long id);
 
   PageInfo findAll(PageRequest pageRequest);
+
+  int save(Article article);
+
+  int updateToDeleted(long id);
 }

@@ -6,10 +6,7 @@ import com.windhc.service.ArticleService;
 import com.windhc.utils.JsonView;
 import com.windhc.utils.PageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by HC on 2016/6/19.
@@ -35,7 +32,13 @@ public class ArticleController {
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
   public JsonView delete(@PathVariable long id) {
+    articleService.updateToDeleted(id);
+    return JsonView.success();
+  }
 
+  @RequestMapping(method = RequestMethod.POST, value = "")
+  public JsonView save(@RequestBody Article article) {
+    articleService.save(article);
     return JsonView.success();
   }
 

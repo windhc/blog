@@ -25,5 +25,5 @@ public interface ArticleMapper {
 
   Article selectById(long id);
 
-  List<Article> selectAll();
+  List<Article> selectAllByDeleted(boolean deleted);
 }

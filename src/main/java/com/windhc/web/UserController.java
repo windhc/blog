@@ -35,7 +35,7 @@ public class UserController {
   public Map info() {
     Object principal = SecurityUtils.getSubject().getPrincipal();
     Map<String, Object> map = new HashMap<>();
-    map.put("username", principal);
+    map.put("user", principal);
     return map;
   }
 }
