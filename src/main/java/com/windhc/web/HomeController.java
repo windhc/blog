@@ -19,6 +19,11 @@ public class HomeController {
     return "/front/index.html";
   }
 
+  @RequestMapping(method = RequestMethod.GET, value = "/detail")
+  public String detail() {
+    return "/front/detail.html";
+  }
+
   @RequestMapping(method = RequestMethod.GET, value = "/login")
   public String login() {
     return "/admin/login.html";

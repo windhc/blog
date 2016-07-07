@@ -1,0 +1,30 @@
+<div class="form-group">
+    <label for="title">标题</label>
+    <input type="text" class="form-control" id="title" name="title" ng-model="article.title" placeholder="标题" required>
+</div>
+<div class="form-group">
+    <label for="category">分类</label>
+    <select name="category" id="category" class="form-control" ng-model="article.category.categoryId" required
+            ng-options="category.categoryId as category.categoryName for category in categories">
+    </select>
+</div>
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a data-target="#home" aria-controls="home" role="tab" data-toggle="tab">内容</a></li>
+        <li role="presentation"><a data-target="#profile" aria-controls="profile" role="tab" data-toggle="tab">预览</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="form-group">
+                <textarea name="content" placeholder="输入内容" id="content" cols="30" rows="6" class="form-control" ng-model="article.content" required></textarea>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <div class="form-group">
+                <div marked="article.content" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,4 +42,10 @@ public class ArticleController {
     return JsonView.success();
   }
 
+  @RequestMapping(method = RequestMethod.PUT, value = "")
+  public JsonView update(@RequestBody Article article) {
+    articleService.update(article);
+    return JsonView.success();
+  }
+
 }

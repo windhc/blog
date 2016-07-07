@@ -16,4 +16,6 @@ public interface ArticleService {
   int save(Article article);
 
   int updateToDeleted(long id);
+
+  int update(Article article);
 }

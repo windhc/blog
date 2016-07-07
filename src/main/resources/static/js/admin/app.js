@@ -5,7 +5,8 @@
 
 var BlogApp = angular.module('BlogApp', [
     require('angular-route'),
-    require('angular-ui-bootstrap/src/pagination')
+    require('angular-ui-bootstrap/src/pagination'),
+    require('angular-marked')
 ]);
 
 module.exports = BlogApp;

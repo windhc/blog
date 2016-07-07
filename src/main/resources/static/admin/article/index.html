@@ -44,6 +44,7 @@
                             <th>标题</th>
                             <th>分类</th>
                             <th>创建时间</th>
+                            <th>状态</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -56,6 +57,7 @@
                             </td>
                             <td ng-bind="article.category.categoryName"></td>
                             <td ng-bind="article.createTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                            <td ng-bind="article.status"></td>
                             <td>
                                 <a ng-href="#/article/{{article.articleId}}/edit">编辑</a>
                                 <a ng-click="delete(article.articleId)">删除</a>

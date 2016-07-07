@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-admin-article-edit
-</body>
-</html>
+<!--Begin:breadcrumb -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li><a href="/admin">Home</a></li>
+            <li class="active"><strong>编辑文章</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+<!--End:breadcrumb -->
+<!--Begin:Content -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑文章</h5>
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+                    <form name="articleForm" novalidate>
+
+                        <ng-include src="'/admin/article/form.html'"></ng-include>
+
+                        <button type="button" class="btn btn-default" ng-disabled="!articleForm.$valid" ng-click="save()">修改</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End:Content -->

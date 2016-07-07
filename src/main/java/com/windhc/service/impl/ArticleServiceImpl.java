@@ -48,4 +48,9 @@ public class ArticleServiceImpl implements ArticleService {
     article.setDeleted(true);
     return articleMapper.updateById(article);
   }
+
+  @Override
+  public int update(Article article) {
+    return articleMapper.updateByIdSelective(article);
+  }
 }

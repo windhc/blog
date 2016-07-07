@@ -48,16 +48,27 @@ BlogApp
             }
         }
     ])
-    .controller('ArticleEditCtrl', ['$scope', function($scope) {
+    .controller('ArticleEditCtrl', ['$scope', '$location', '$routeParams', 'ArticleService', 'CommonService',
+        function($scope, $location, $routeParams, ArticleService, CommonService) {
+            ArticleService.allCategory().success(function (data) {
+                $scope.categories = data.data;
+            });
+            ArticleService.getOne($routeParams.id).success(function (data) {
+                $scope.article = data.data;
+            });
 
-        console.log("test ArticleEditCtrl");
-
-    }])
-    .controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'ArticleService', function($scope, $routeParams, ArticleService) {
-
-        ArticleService.getOne($routeParams.id).success(function (data) {
-            $scope.article = data.data;
-        });
-        //console.log("test ArticleDetailCtrl");
-
-    }]);
+            $scope.save = function () {
+                ArticleService.update($scope.article).success(function (data) {
+                    CommonService.show(data);
+                    $location.path('/article');
+                })
+            }
+        }
+    ])
+    .controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'ArticleService',
+        function($scope, $routeParams, ArticleService) {
+            ArticleService.getOne($routeParams.id).success(function (data) {
+                $scope.article = data.data;
+            });
+        }
+    ]);

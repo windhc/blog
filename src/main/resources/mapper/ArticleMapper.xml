@@ -44,7 +44,7 @@
 
   <select id="selectAllByDeleted" resultMap="FullMap" parameterType="java.lang.Boolean">
     select * from article,category,user
-    where articleDeleted=#{deleted,jdbcType=BIT} AND article.category_id=category.categoryId AND article.user_id=user.userId
+    WHERE articleDeleted=#{deleted,jdbcType=BIT} AND article.category_id=category.categoryId AND article.user_id=user.userId ORDER BY article.articleCreateTime DESC
   </select>
 
   <delete id="deleteById" parameterType="java.lang.Long">

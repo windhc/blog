@@ -20,22 +20,11 @@
                     <div class="ibox-tools"></div>
                 </div>
                 <div class="ibox-content">
-                    <form>
-                        <div class="form-group">
-                            <label for="title">标题</label>
-                            <input type="text" class="form-control" id="title" ng-model="article.title" placeholder="标题">
-                        </div>
-                        <div class="form-group">
-                            <label for="category">分类</label>
-                            <select name="" id="category" class="form-control" ng-model="article.category.categoryId"
-                                    ng-options="category.categoryId as category.categoryName for category in categories">
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="content">内容</label>
-                            <textarea name="" id="content" cols="30" rows="6" class="form-control" ng-model="article.content"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-default" ng-click="add()">提交</button>
+                    <form name="articleForm" novalidate>
+
+                        <ng-include src="'/admin/article/form.html'"></ng-include>
+
+                        <button type="button" class="btn btn-default" ng-disabled="!articleForm.$valid" ng-click="add()">提交</button>
                     </form>
 
                 </div>
