@@ -53,8 +53,11 @@ BlogApp
         console.log("test ArticleEditCtrl");
 
     }])
-    .controller('ArticleDetailCtrl', ['$scope', function($scope) {
+    .controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'ArticleService', function($scope, $routeParams, ArticleService) {
 
-        console.log("test ArticleDetailCtrl");
+        ArticleService.getOne($routeParams.id).success(function (data) {
+            $scope.article = data.data;
+        });
+        //console.log("test ArticleDetailCtrl");
 
     }]);

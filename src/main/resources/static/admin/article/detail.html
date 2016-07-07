@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-admin-article-detail
-</body>
-</html>
+<!--Begin:breadcrumb -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li><a href="/admin">Home</a></li>
+            <li class="active"><strong>文章详情</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+<!--End:breadcrumb -->
+<!--Begin:Content -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{article.title}}</h5>
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+
+                    <label>分类：</label>
+                    <div>{{article.category.categoryName}}</div>
+                    <br>
+                    <label>时间：</label>
+                    <div>{{article.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    <br>
+                    <label>内容：</label>
+                    <div>{{article.content}}</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End:Content -->

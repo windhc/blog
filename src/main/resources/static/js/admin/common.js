@@ -12,6 +12,11 @@ BlogApp
                 return $q.reject(response);
             },
             'response' : function(response) {
+                // 判断返回的是否是登陆页面
+                var str = response.data.toString();
+                if(str.search(/<title>登陆<\/title>/) > 0) {
+                    window.location.reload()
+                }
                 return response;
             },
             'request' : function(config) {

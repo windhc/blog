@@ -37,12 +37,9 @@
   </sql>
 
   <select id="selectById" parameterType="java.lang.Long" resultMap="FullMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from article
-    where articleId = #{articleId,jdbcType=INTEGER}
+    select *
+    from article, category, user
+    where articleId = #{articleId,jdbcType=INTEGER} and article.category_id=category.categoryId and article.user_id=user.userId
   </select>
 
   <select id="selectAllByDeleted" resultMap="FullMap" parameterType="java.lang.Boolean">
