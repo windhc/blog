@@ -12,6 +12,7 @@ public class Article {
 
   private long articleId;
   private String title;
+  private String summary;
   private String content;
   private Constants.ArticleStatus status;
   private long createTime = Instant.now().toEpochMilli();
@@ -43,6 +44,14 @@ public class Article {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public String getSummary() {
+    return summary;
+  }
+
+  public void setSummary(String summary) {
+    this.summary = summary;
   }
 
   public String getContent() {

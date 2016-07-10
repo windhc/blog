@@ -38,6 +38,7 @@ CREATE TABLE category(
 CREATE TABLE article(
   articleId INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(125),
+  summary VARCHAR(256),
   articleContent TEXT,
   status INT,
   articleCreateTime BIGINT(20),

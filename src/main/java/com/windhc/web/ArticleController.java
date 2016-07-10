@@ -18,7 +18,7 @@ public class ArticleController {
   @Autowired
   ArticleService articleService;
 
-  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+  @RequestMapping(method = RequestMethod.GET, value = {"/{id}", "/front/{id}"})
   public JsonView getById(@PathVariable long id) {
     Article article = articleService.findById(id);
     return JsonView.success(article);

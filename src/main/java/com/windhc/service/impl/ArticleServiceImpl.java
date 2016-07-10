@@ -19,6 +19,7 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
+  @SuppressWarnings("SpringJavaAutowiringInspection")
   @Autowired
   ArticleMapper articleMapper;
 
@@ -37,6 +38,8 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Override
   public int save(Article article) {
+    int length = article.getContent().length() > 200 ? 200 : article.getContent().length();
+    article.setSummary(article.getContent().substring(0, length));
     article.setStatus(Constants.ArticleStatus.Publish);
     article.setUser(BaseUtils.currentUser());
     return articleMapper.insert(article);
@@ -51,6 +54,8 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Override
   public int update(Article article) {
+    int length = article.getContent().length() > 200 ? 200 : article.getContent().length();
+    article.setSummary(article.getContent().substring(0, length));
     return articleMapper.updateByIdSelective(article);
   }
 }

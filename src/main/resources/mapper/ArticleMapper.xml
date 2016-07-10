@@ -17,6 +17,7 @@
   <resultMap id="FullMap" type="com.windhc.domain.Article">
     <id column="articleId" jdbcType="INTEGER" property="articleId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="articleCreateTime" jdbcType="BIGINT" property="createTime" />
     <result column="articleDeleted" jdbcType="BIT" property="deleted" />
@@ -30,7 +31,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    articleId, title, status, articleCreateTime, articleDeleted, category_id, user_id
+    articleId, title, summary, status, articleCreateTime, articleDeleted, category_id, user_id
   </sql>
   <sql id="Blob_Column_List">
     articleContent
@@ -53,10 +54,10 @@
   </delete>
 
   <insert id="insert" parameterType="com.windhc.domain.Article">
-    insert into article (title, status,
+    insert into article (title, summary,status,
       articleCreateTime, articleDeleted, category_id, 
       user_id, articleContent)
-    values (#{title,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+    values (#{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
       #{createTime,jdbcType=BIGINT}, #{deleted,jdbcType=BIT}, #{category.categoryId,jdbcType=INTEGER},
       #{user.userId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
@@ -69,6 +70,9 @@
       </if>
       <if test="title != null">
         title,
+      </if>
+      <if test="summary != null">
+        summary,
       </if>
       <if test="status != null">
         status,
@@ -95,6 +99,9 @@
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
@@ -123,6 +130,9 @@
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
@@ -148,6 +158,7 @@
   <update id="updateByIdWithBLOBs" parameterType="com.windhc.domain.Article">
     update article
     set title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       articleCreateTime = #{createTime,jdbcType=BIGINT},
       articleDeleted = #{deleted,jdbcType=BIT},
@@ -160,6 +171,7 @@
   <update id="updateById" parameterType="com.windhc.domain.Article">
     update article
     set title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       articleCreateTime = #{createTime,jdbcType=BIGINT},
       articleDeleted = #{deleted,jdbcType=BIT},
