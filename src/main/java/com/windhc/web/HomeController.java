@@ -16,12 +16,12 @@ public class HomeController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String home() {
-    return "/front/index.html";
+    return "/front/index/index.html";
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/detail")
+  @RequestMapping(method = RequestMethod.GET, value = "/front/archives/{id}")
   public String detail() {
-    return "/front/detail.html";
+    return "/front/detail/detail.html";
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/login")

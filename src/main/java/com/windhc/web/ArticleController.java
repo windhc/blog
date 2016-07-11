@@ -24,7 +24,7 @@ public class ArticleController {
     return JsonView.success(article);
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "")
+  @RequestMapping(method = RequestMethod.GET, value = {"", "/front"})
   public JsonView getAll(PageRequest pageRequest) {
     PageInfo pageInfo = articleService.findAll(pageRequest);
     return JsonView.success(pageInfo);

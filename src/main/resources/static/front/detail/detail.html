@@ -12,7 +12,6 @@
     <link rel="alternate" type="application/rss+xml" title="Hacker » 最是那盖世无双金甲战士评论Feed"
           href="http://demo.20theme.com/hacker/archives/62/feed">
 
-    <!--<script src="/front/js/wp-emoji-release.min.js" type="text/javascript"></script>-->
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -42,7 +41,7 @@
     <div id="primary" class="content-area">
         <header id="masthead" class="site-header" role="banner">
             <div class="site-branding">
-                <p class="site-title"><a href="http://demo.20theme.com/hacker/" rel="home">Hacker</a></p>
+                <p class="site-title"><a href="http://demo.20theme.com/hacker/" rel="home">HC</a></p>
                 <p class="site-description">I SAW, I READ, I WRITE</p></div>
             <nav id="site-navigation" class="main-navigation" role="navigation">
                 <div class="menu-primary-menu-container">
@@ -50,12 +49,15 @@
                         <li id="menu-item-10"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-10">
                             <a href="/">最新</a></li>
-                        <li id="menu-item-28"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a
-                                href="http://demo.20theme.com/hacker/tags">标签</a></li>
                         <li id="menu-item-27"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a
+                                href="/front/category">分类</a></li>
+                        <li id="menu-item-28"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a
-                                href="http://demo.20theme.com/hacker/about">关于</a></li>
+                                href="/front/archives">归档</a></li>
+                        <li id="menu-item-29"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a
+                                href="/front/about">关于</a></li>
                     </ul>
                 </div>
             </nav>
@@ -66,10 +68,13 @@
             <main id="main" class="site-main" role="main">
                 <article id="post-62"
                          class="Article post-62 post type-post status-publish format-image has-post-thumbnail hentry category-26 tag-28 post_format-post-format-image">
-                    <h1 class="Article__title">最是那盖世无双金甲战士</h1>
+                    <h1 class="Article__title">{{article.title}}</h1>
                     <div class="Article__topMeta">
-                        <span class="posted-on"><a href="http://demo.20theme.com/hacker/archives/62" rel="bookmark">
-                            <time class="entry-date published" datetime="2015-12-25T19:32:12+00:00">2015年12月25日</time>
+                        <span class="posted-on"><a href="" rel="bookmark">
+                            <time class="entry-date published" datetime="2015-12-25T19:32:12+00:00">
+                                {{article.createTime | date}}
+                                {{article.createTime | date}}
+                            </time>
                         </a></span></div>
                     <div class="Article__featured">
                         <img width="750" height="384" src="/front/images/dasheng.jpg"
@@ -240,7 +245,11 @@
 </div>
 <!-- END #page -->
 <script type="text/javascript" src="/front/js/comment-reply.min.js"></script>
-<!--<script type="text/javascript" src="/front/js/wp-embed.min.js"></script>-->
+<script type="text/javascript" src="/front/js/jquery-3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/front/js/vue.js"></script>
+<script type="text/javascript" src="/front/js/marked.min.js"></script>
+
+<script type="text/javascript" src="/front/detail/detail.js"></script>
 
 </body>
 </html>

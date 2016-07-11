@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta id="viewport" name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <title>HC – I SAW, I READ, I WRITE</title>
+    <link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">
+    <link rel="alternate" type="application/rss+xml" title="Hacker » 评论Feed"
+          href="http://demo.20theme.com/hacker/comments/feed">
+
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel="stylesheet" id="hacker-style-css" href="/front/css/style.css" type="text/css" media="all">
+</head>
+<body class="home blog">
+<div id="page" class="site">
+    <div id="primary" class="content-area">
+        <header id="masthead" class="site-header" role="banner">
+            <div class="site-branding">
+                <h1 class="site-title"><a href="/" rel="home">HC</a></h1>
+                <p class="site-description">I SAW, I READ, I WRITE</p></div>
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+                <div class="menu-primary-menu-container">
+                    <ul id="primary-menu" class="menu">
+                        <li id="menu-item-10"
+                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
+                            <a href="/">最新</a></li>
+                        <li id="menu-item-27"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a
+                                href="/front/category">分类</a></li>
+                        <li id="menu-item-28"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a
+                                href="/front/archives">归档</a></li>
+                        <li id="menu-item-29"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a
+                                href="/front/about">关于</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- END #site-navigation -->
+        </header>
+        <!-- END .site-header -->
+        <div id="content" class="site-content">
+            <main id="main" class="site-main posts-loop" role="main">
+
+                <article id="post-62" v-for="article in articles"
+                         class="Article post-62 post type-post status-publish format-image has-post-thumbnail sticky hentry category-26 tag-28 post_format-post-format-image">
+                    <h2 class="Article__title">
+                        <a href="/front/archives/{{article.articleId}}" rel="bookmark">
+                            <span>{{article.title}}</span>
+                        </a>
+                        <span class="sticky-mark" v-if="$index==0"></span>
+                    </h2>
+                    <div class="Article__topMeta">
+                        <span class="posted-on"><a href="/front/archives/{{article.articleId}}" rel="bookmark">
+                            <time class="entry-date published" datetime="2015-12-25T19:32:12+00:00">
+                                {{article.createTime | date}}
+                            </time>
+                        </a></span>
+                    </div>
+                    <div class="Article__featured">
+                        <!--<img width="750" height="384" src="/front/images/dasheng.jpg"-->
+                             <!--class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="dasheng">-->
+                    </div>
+                    <!-- END .featured-media -->
+
+                    <div class="Article__excerpt">
+                        <p v-html="article.summary | marked">
+                        </p>
+                        <a href="/front/archives/{{article.articleId}}" class="more-link">继续阅读
+                            <span class="screen-reader-text"></span>
+                        </a>
+                    </div>
+                    <!-- END .Article__excerpt -->
+                    <footer class="Article__footer">
+                        <div class="Article__meta pull-left">
+                            <span class="post-tags"><i class="icon-tags"></i><a
+                                    href="http://demo.20theme.com/hacker/archives/tag/%e7%94%b5%e5%bd%b1"
+                                    rel="tag">电影</a></span></div>
+                        <!-- END .pull-left -->
+                        <div class="Article__meta pull-right">
+                            <span><i class="icon-comments"></i><span><a
+                                    href="http://demo.20theme.com/hacker/archives/62#comments">5 条评论</a></span></span>
+                        </div>
+                        <!-- END .pull-right -->
+                    </footer>
+                    <!-- END .Article__footer -->
+                </article>
+                <!-- END .Article -->
+
+            </main>
+            <!-- END #main -->
+
+            <nav class="navigation posts-navigation" role="navigation">
+                <h2 class="screen-reader-text">文章导航</h2>
+                <div class="nav-links">
+                    <div class="nav-previous"><a href="http://demo.20theme.com/hacker/page/2">先前文章</a></div>
+                </div>
+            </nav>
+        </div>
+        <!-- END #content -->
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info">
+                <p class="meta">
+                    Proudly powered by <a href="https://github.com/jlkm2010/blog" target="_blank">jlkm2010/blog</a></p>
+                <p class="meta">
+                    Theme by <a href="http://www.liuxinyu.me/" target="_blank">moyu</a></p>
+            </div>
+            <!-- END .site-info -->
+        </footer>
+        <!-- END #colophon -->
+    </div>
+    <!-- END #primary -->
+</div>
+<!-- END #page -->
+
+<script type="text/javascript" src="/front/js/jquery-3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/front/js/vue.js"></script>
+<script type="text/javascript" src="/front/js/marked.min.js"></script>
+
+<script type="text/javascript" src="/front/index/index.js"></script>
+
+</body>
+</html>
