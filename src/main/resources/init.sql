@@ -40,7 +40,7 @@ CREATE TABLE article(
   title VARCHAR(125),
   summary VARCHAR(256),
   articleContent TEXT,
-  status INT,
+  status VARCHAR(25),
   articleCreateTime BIGINT(20),
   articleDeleted BIT(1),
   category_id INT,
@@ -64,7 +64,7 @@ CREATE TABLE comment(
 insert into role (roleName) values ('admin');
 insert into role (roleName) values ('guest');
 
-insert into user (username, password, email, role_id) values ('admin', md5('admin'), '123@qq.com', 1);
+insert into user (username, password, email, role_id) values ('admin', md5('admin888'), '123@qq.com', 1);
 
 INSERT INTO category (categoryName) VALUES ('技术');
 INSERT INTO category (categoryName) VALUES ('生活');

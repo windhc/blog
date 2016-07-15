@@ -5,7 +5,7 @@
 
     <meta id="viewport" name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <title>HC – I SAW, I READ, I WRITE</title>
+    <title>HC</title>
     <link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">
     <link rel="alternate" type="application/rss+xml" title="Hacker » 评论Feed"
           href="http://demo.20theme.com/hacker/comments/feed">
@@ -26,6 +26,7 @@
     </style>
     <link rel="stylesheet" id="hacker-style-css" href="/front/css/style.css" type="text/css" media="all">
 </head>
+
 <body class="home blog">
 <div id="page" class="site">
     <div id="primary" class="content-area">
@@ -61,14 +62,13 @@
                          class="Article post-62 post type-post status-publish format-image has-post-thumbnail sticky hentry category-26 tag-28 post_format-post-format-image">
                     <h2 class="Article__title">
                         <a href="/front/archives/{{article.articleId}}" rel="bookmark">
-                            <span>{{article.title}}</span>
+                            <span v-text="article.title"></span>
                         </a>
                         <span class="sticky-mark" v-if="$index==0"></span>
                     </h2>
                     <div class="Article__topMeta">
                         <span class="posted-on"><a href="/front/archives/{{article.articleId}}" rel="bookmark">
-                            <time class="entry-date published" datetime="2015-12-25T19:32:12+00:00">
-                                {{article.createTime | date}}
+                            <time class="entry-date published" v-text="article.createTime | date">
                             </time>
                         </a></span>
                     </div>
@@ -78,9 +78,9 @@
                     </div>
                     <!-- END .featured-media -->
 
-                    <div class="Article__excerpt">
-                        <p v-html="article.summary | marked">
-                        </p>
+                    <div class="Article__excerpt" v-if="article.summary">
+                        <p v-html="article.summary | marked"></p>
+
                         <a href="/front/archives/{{article.articleId}}" class="more-link">继续阅读
                             <span class="screen-reader-text"></span>
                         </a>
@@ -88,9 +88,9 @@
                     <!-- END .Article__excerpt -->
                     <footer class="Article__footer">
                         <div class="Article__meta pull-left">
-                            <span class="post-tags"><i class="icon-tags"></i><a
-                                    href="http://demo.20theme.com/hacker/archives/tag/%e7%94%b5%e5%bd%b1"
-                                    rel="tag">电影</a></span></div>
+                            <span class="post-tags"><i class="icon-tags"></i>
+                                <a href="/front/category/{{article.category.categoryId}}" rel="tag">{{article.category.categoryName}}</a>
+                            </span></div>
                         <!-- END .pull-left -->
                         <div class="Article__meta pull-right">
                             <span><i class="icon-comments"></i><span><a
@@ -108,7 +108,7 @@
             <nav class="navigation posts-navigation" role="navigation">
                 <h2 class="screen-reader-text">文章导航</h2>
                 <div class="nav-links">
-                    <div class="nav-previous"><a href="http://demo.20theme.com/hacker/page/2">先前文章</a></div>
+                    <div class="nav-previous"><a href="/">先前文章</a></div>
                 </div>
             </nav>
         </div>
@@ -132,7 +132,7 @@
 <script type="text/javascript" src="/front/js/vue.js"></script>
 <script type="text/javascript" src="/front/js/marked.min.js"></script>
 
-<script type="text/javascript" src="/front/index/index.js"></script>
+<script type="text/javascript" src="/front/article/index.js"></script>
 
 </body>
 </html>

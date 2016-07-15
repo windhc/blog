@@ -11,7 +11,7 @@
     <result column="user_id" jdbcType="INTEGER" property="user.userId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.windhc.domain.Article">
-    <result column="articleContent" jdbcType="LONGVARCHAR" property="content" />
+    <result column="articleContent" jdbcType="VARCHAR" property="content" />
   </resultMap>
     <!--返回包含内联对象-->
   <resultMap id="FullMap" type="com.windhc.domain.Article">
@@ -27,7 +27,7 @@
                  resultMap="com.windhc.mapper.UserMapper.BaseResultMap"></association>
   </resultMap>
   <resultMap extends="FullMap" id="FullMapWithBLOBs" type="com.windhc.domain.Article">
-    <result column="articleContent" jdbcType="LONGVARCHAR" property="content" />
+    <result column="articleContent" jdbcType="VARCHAR" property="content" />
   </resultMap>
 
   <sql id="Base_Column_List">
