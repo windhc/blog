@@ -43,6 +43,9 @@ BlogApp.service('ArticleService', ['$http',
             listArticle: function (params) {
                 return $http.get("/article?" + params);
             },
+            getCategory: function (id) {
+                return $http.get("/category/" + id);
+            },
             listCategory: function (params) {
                 return $http.get("/category?" + params);
             },
@@ -51,6 +54,9 @@ BlogApp.service('ArticleService', ['$http',
             },
             deleteCategory: function (id) {
                 return $http.delete("/category/" + id);
+            },
+            updateCategory: function (category) {
+                return $http.put("/category", category);
             },
             allCategory: function () {
                 return $http.get("/category/all");

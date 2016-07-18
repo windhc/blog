@@ -32,6 +32,12 @@ public class CategoryController {
     return JsonView.success(categories);
   }
 
+  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+  public JsonView getOne(@PathVariable long id) {
+    Category category = categoryService.getOne(id);
+    return JsonView.success(category);
+  }
+
   @RequestMapping(method = RequestMethod.POST, value = "")
   public JsonView save(@RequestBody Category category) {
     categoryService.save(category);
@@ -39,8 +45,14 @@ public class CategoryController {
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public JsonView save(@PathVariable long id) {
+  public JsonView delete(@PathVariable long id) {
     categoryService.delete(id);
+    return JsonView.success();
+  }
+
+  @RequestMapping(method = RequestMethod.PUT, value = "")
+  public JsonView update(@RequestBody Category category) {
+    categoryService.update(category);
     return JsonView.success();
   }
 }

@@ -20,4 +20,8 @@ public interface CategoryService {
   int save(Category category);
 
   int delete(long id);
+
+  int update(Category category);
+
+  Category getOne(long id);
 }

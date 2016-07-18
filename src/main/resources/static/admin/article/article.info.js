@@ -40,6 +40,7 @@ BlogApp
                 $scope.categories = data.data;
             });
 
+            $scope.article = {};
             $scope.add = function () {
                 ArticleService.save($scope.article).success(function (data) {
                     CommonService.show(data);

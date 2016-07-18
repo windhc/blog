@@ -39,6 +39,23 @@ BlogApp
                     $('#addModal').modal('toggle');
                     getPageData();
                 })
+            };
+
+            // 打开修改模态框
+            $scope.openEdit = function (id) {
+                ArticleService.getCategory(id).success(function (data) {
+                    $('#editModal').modal('show');
+                    $scope.category = data.data;
+                })
+            };
+
+            // 修改分类
+            $scope.update = function (id) {
+                ArticleService.updateCategory($scope.category).success(function (data) {
+                    CommonService.show(data);
+                    $('#editModal').modal('toggle');
+                    getPageData();
+                })
             }
         }
     ]);
