@@ -24,3 +24,8 @@ gradle/
 .gradle/
 build/
 node_modules/
+
+**/front/config/
+**/front/dist/
+**/dist/
+**/js/build/

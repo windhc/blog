@@ -16,7 +16,7 @@ public class HomeController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String home() {
-    return "/front/article/index.html";
+    return "/front/index.html";
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/front/archives/{id}")

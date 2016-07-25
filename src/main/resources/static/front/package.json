@@ -1,0 +1,34 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "vue+webapck",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --inline"
+  },
+  "dependencies": {
+    "vue": "^1.0.18"
+  },
+  "devDependencies": {
+    "css-loader": "^0.16.0",
+    "gulp": "^3.9.1",
+    "gulp-webpack": "^1.5.0",
+    "html-loader": "^0.3.0",
+    "marked": "^0.3.5",
+    "style-loader": "^0.12.3",
+    "vinyl-named": "^1.1.0",
+    "vue-html-loader": "^1.2.0",
+    "vue-loader": "^7.2.0",
+    "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "webpack": "^1.12.0",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "author": "hc",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "webpack"
+  ]
+}

@@ -19,7 +19,7 @@ import java.util.Map;
 public class UserController {
 
   @Autowired
-  UserService userService;
+  private UserService userService;
 
   @RequestMapping(method = RequestMethod.GET, value = "/test")
   public User test() {
