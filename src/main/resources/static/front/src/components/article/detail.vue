@@ -24,7 +24,7 @@
                 <footer class="Article__footer">
                     <div class="Article__meta pull-left">
                             <span class="post-tags"><i class="icon-tags"></i>
-                                <a href="/front/category/{{article.category.categoryId}}" rel="tag">{{article.category.categoryName}}</a>
+                                <a v-link="{path: '/category/' + article.category.categoryId}" rel="tag">{{article.category.categoryName}}</a>
                             </span>
                     </div>
                     <!-- END .pull-left -->
@@ -135,9 +135,9 @@
         ready: function() {
             var resource = this.$resource('article/front{/id}');
             resource.get({id: this.$route.params.id}).then(function (response) {
-                this.article = response.data.data;
+                this.article = response.json().data;
+                shareInit();
             });
-            shareInit();
         }
     }
 </script>

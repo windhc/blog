@@ -2,6 +2,7 @@ package com.windhc.web;
 
 import com.windhc.domain.User;
 import com.windhc.service.UserService;
+import com.windhc.utils.JsonView;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +38,17 @@ public class UserController {
     Map<String, Object> map = new HashMap<>();
     map.put("user", principal);
     return map;
+  }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/pwd")
+  public JsonView changePwd() {
+
+    return JsonView.success();
+  }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/pwd/verify")
+  public JsonView verifyPwd() {
+
+    return JsonView.success();
   }
 }

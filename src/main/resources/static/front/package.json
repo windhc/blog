@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --inline"
   },
   "dependencies": {
-    "vue": "^1.0.18"
+    "vue": "^1.0.26"
   },
   "devDependencies": {
     "css-loader": "^0.16.0",

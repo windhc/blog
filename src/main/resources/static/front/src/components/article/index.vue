@@ -33,7 +33,7 @@
         <footer class="Article__footer">
           <div class="Article__meta pull-left">
                             <span class="post-tags"><i class="icon-tags"></i>
-                                <a href="/front/category/{{article.category.categoryId}}" rel="tag">{{article.category.categoryName}}</a>
+                                <a v-link="{path: '/category/' + article.category.categoryId}" rel="tag">{{article.category.categoryName}}</a>
                             </span></div>
           <!-- END .pull-left -->
           <div class="Article__meta pull-right">
@@ -53,7 +53,7 @@
     <nav class="navigation posts-navigation" role="navigation">
       <h2 class="screen-reader-text">文章导航</h2>
       <div class="nav-links">
-        <div class="nav-previous"><a href="/">先前文章{{msg}}</a></div>
+        <div class="nav-previous"><a href="/">先前文章</a></div>
       </div>
     </nav>
   </div>
@@ -66,13 +66,12 @@
     export default{
         data() {
             return {
-                articles: {},
-                msg: "112121 msg"
+                articles: {}
             }
         },
         ready: function(){
             this.$http.get('/article/front?pageNum='+1+"&pageSize="+10).then(function(response) {
-                this.articles = response.data.data.list;
+                this.articles = response.json().data.list;
             });
         },
         filters: {

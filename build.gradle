@@ -16,9 +16,11 @@ apply plugin: 'spring-boot'
 
 jar {
     exclude('**/*node_modules*')
-    exclude('**/*test/unit*')
 	baseName = 'blog'
 	version = '0.0.1-SNAPSHOT'
+}
+processResources{
+	exclude '**/*node_modules*'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
