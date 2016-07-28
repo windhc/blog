@@ -9,19 +9,21 @@ personal blog
 - 数据库使用的Sqlite
 
 # 使用
-首先需安装nodejs
+首先需安装nodejs。
 
 进入src/main/resources/static目录，执行
 ```
+npm install
 gulp js
 ```
-生成后台管理页面的JS。
+安装依赖和生成后台管理页面的JS。
 
 进入src/main/resources/static/front目录，执行
 ```
+npm install
 gulp bundle
 ```
-生成前台页面所需的JS。
+安装依赖和生成前台页面所需的JS。
 
 后台管理登陆页面：http://localhost/login
 

@@ -1,0 +1,91 @@
+<!--Begin:breadcrumb -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li><a href="/admin">Home</a></li>
+            <li class="active"><strong>修改密码</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+<!--End:breadcrumb -->
+<!--Begin:Content -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>密码修改</h5>
+                    <div class="ibox-tools">
+                        <!--<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addModal">添加</button>-->
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <form name="pwdForm" novalidate>
+                        <div class="form-group">
+                            <label for="oldpwd">原密码</label>
+                            <input type="text" class="form-control" id="oldPwd" ng-model="cp.oldPwd" placeholder="原密码" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPwd">输入新密码</label>
+                            <input type="password" class="form-control" id="newPwd" ng-model="cp.newPwd" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPwd">确认新密码</label>
+                            <input type="password" class="form-control" id="confirmPwd" ng-model="cp.confirmPwd" placeholder="Password" required>
+                        </div>
+                        <button class="btn btn-default" ng-disabled="!pwdForm.$valid" ng-click="updatePwd()">修改</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End:Content -->
+
+<!-- AddModal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">名称</label>
+                    <input type="text" class="form-control" id="name" ng-model="category.categoryName" placeholder="名称">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EditModal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改分类</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">名称</label>
+                    <input type="text" class="form-control" id="name" ng-model="category.categoryName" placeholder="名称">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="update()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,11 @@
 var gulp = require('gulp');
 var webpack = require('gulp-webpack');
 var named = require('vinyl-named');
+//压缩javascript文件
+var uglify = require('gulp-uglify');
+
+// 加载webpack的配置文件
+var config = require('./webpack.config');
 
 var appList = ['main'];
 
@@ -14,7 +19,8 @@ gulp.task('default', ['bundle'], function() {
 gulp.task('bundle', function() {
     return gulp.src(mapFiles(appList, 'js'))
         .pipe(named())
-        .pipe(webpack(getConfig()))
+        .pipe(webpack(config))
+        //.pipe(uglify())
         .pipe(gulp.dest('dist/'))
 });
 
@@ -31,6 +37,7 @@ gulp.task('watch', function() {
  */
 function getConfig(opt) {
     var config = {
+
         module: {
             loaders: [
                 { test: /\.vue$/, loader: 'vue'}

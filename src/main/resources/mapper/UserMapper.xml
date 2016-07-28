@@ -65,7 +65,7 @@
             <if test="email != null">
                 email,
             </if>
-            <if test="roleId != null">
+            <if test="role != null">
                 role_id,
             </if>
         </trim>

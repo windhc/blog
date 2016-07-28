@@ -1,17 +1,26 @@
 /**
  * Created by HC on 2016/7/25.
  */
+var webpack = require('webpack');
 module.exports = {
     entry: "./src/main.js",
     output: {
-        path: "./build",
-        publicPath: "/build/",
-        filename: "build.js"
+        path: __dirname+"/dist",
+        //publicPath: "/dist/",
+        filename: "main.js"
     },
     module: {
         loaders: [
-            { test: /\.styl$/, loader: "style!css!stylus" },
-            { test: /\.html$/, loader: "html" }
+            { test: /\.vue$/, loader: 'vue'}
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ],
+    //watch: true,
+    //devtool: 'source-map'
 }

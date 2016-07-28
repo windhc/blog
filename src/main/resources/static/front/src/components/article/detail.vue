@@ -16,9 +16,10 @@
                 <!-- END .featured-media -->
 
                 <div class="Article__content Content">
-                    <template v-if="article.content">
+                    <!--<template>-->
                         {{{article.content | marked}}}
-                    </template>
+                        <!--<p v-html="article.content | marked"></p>-->
+                    <!--</template>-->
                 </div>
                 <!-- END .Article__content -->
                 <footer class="Article__footer">
@@ -123,6 +124,7 @@
         data(){
             return{
                 article: {
+                    content: '',
                     category: {}
                 }
             }
