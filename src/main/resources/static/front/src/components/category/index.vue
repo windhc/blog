@@ -4,8 +4,11 @@
             <article
                     class="Article post-62 post type-post status-publish format-image has-post-thumbnail hentry category-26 tag-28 post_format-post-format-image">
 
-                分类页面 <br>
-                开发中
+                <ul style="margin-left:10%">
+                    <li v-for="category in categorys">
+                        <a>{{category.categoryName}}</a>
+                    </li>
+                </ul>
             </article>
         </main>
     </div>
@@ -18,8 +21,13 @@
     export default{
         data(){
             return{
-                msg:'hello vue'
+                categorys:{}
             }
+        },
+        ready: function(){
+            this.$http.get('/category/front/all').then(function(response) {
+                this.categorys = response.json().data;
+            });
         },
         components:{
         }

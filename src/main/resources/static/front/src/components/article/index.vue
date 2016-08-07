@@ -11,7 +11,7 @@
           <span class="sticky-mark" v-if="$index==0"></span>
         </h2>
         <div class="Article__topMeta">
-                        <span class="posted-on"><a href="/front/archives/{{article.articleId}}" rel="bookmark">
+                        <span class="posted-on"><a rel="bookmark">
                             <time class="entry-date published" v-text="article.createTime | date">
                             </time>
                         </a></span>
@@ -53,7 +53,7 @@
     <nav class="navigation posts-navigation" role="navigation">
       <h2 class="screen-reader-text">文章导航</h2>
       <div class="nav-links">
-        <div class="nav-previous"><a href="/">先前文章</a></div>
+        <div class="nav-previous"><a v-link="{ path: '/archives' }">先前文章</a></div>
       </div>
     </nav>
   </div>
@@ -70,7 +70,7 @@
             }
         },
         ready: function(){
-            this.$http.get('/article/front?pageNum='+1+"&pageSize="+10).then(function(response) {
+            this.$http.get('/article/front?pageNum='+1+"&pageSize="+8).then(function(response) {
                 this.articles = response.json().data.list;
             });
         },

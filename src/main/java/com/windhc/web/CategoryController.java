@@ -26,7 +26,7 @@ public class CategoryController {
     return JsonView.success(pageInfo);
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/all")
+  @RequestMapping(method = RequestMethod.GET, value = {"/all", "/front/all"})
   public JsonView getAll() {
     List<Category> categories = categoryService.findAll();
     return JsonView.success(categories);
