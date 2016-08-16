@@ -31,19 +31,33 @@
 
 <div id="page" class="site">
     <div id="primary" class="content-area">
-        <div id="app">
-            <app></app>
-        </div>
+
+    <#include "common/header.html">
+
+        <main id="main" class="site-main posts-loop" role="main">
+            <article
+                    class="Article post-62 post type-post status-publish format-image has-post-thumbnail hentry category-26 tag-28 post_format-post-format-image">
+
+                <ul style="margin-left:10%">
+                    <#list categories as category>
+                    <li>
+                        <a>${category.categoryName}</a>
+                    </li>
+                    </#list>
+                </ul>
+            </article>
+        </main>
+
+    <#include "common/footer.html">
+
     </div>
     <!-- END #primary -->
 </div>
 
 <!--<script type="text/javascript" src="/front/js/marked.min.js"></script>-->
 <!--<script type="text/javascript" src="/front/js/jquery-3.1.0/jquery.min.js"></script>-->
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="/front/js/basicShare.0.2.min.js"></script>
-<!--<script src="/front/dist/main.js"></script>-->
-<script src="http://blogstore.b0.upaiyun.com/static/main.js"></script>
+<#--<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>-->
+<#--<script type="text/javascript" src="/front/js/basicShare.0.2.min.js"></script>-->
 
 </body>
 

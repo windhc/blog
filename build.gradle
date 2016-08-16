@@ -32,6 +32,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-cache')
+	compile("org.springframework.boot:spring-boot-starter-freemarker")
 	compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
 	compile("org.apache.shiro:shiro-core:1.2.5")
 	compile("org.apache.shiro:shiro-web:1.2.5")

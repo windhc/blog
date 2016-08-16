@@ -31,19 +31,44 @@
 
 <div id="page" class="site">
     <div id="primary" class="content-area">
-        <div id="app">
-            <app></app>
+
+    <#include "common/header.html">
+
+        <div id="content" class="site-content">
+            <main id="main" class="site-main posts-loop" role="main">
+                <article
+                        class="Article post-62 post type-post status-publish format-image has-post-thumbnail hentry category-26 tag-28 post_format-post-format-image">
+
+                    <ul style="margin-left:10%">
+                        <#list articles.list as article>
+                        <li>
+                            <a href="/front/article/${article.articleId}">${article.title}</a>
+                            [<span>${article.category.categoryName}</span>]
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="time-text">${article.createTime?number_to_datetime?string('yyyy-MM-dd')}</span>
+                        </li>
+                        </#list>
+                    </ul>
+
+                    <div style="margin-left:10%">
+                        <a href="javascript:void(0)" @click="perv()" id="perv">上一页</a>
+                        <a href="javascript:void(0)" @click="next()" id="next" style="margin-left:50%">下一页</a>
+                    </div>
+
+                </article>
+            </main>
         </div>
+
+    <#include "common/footer.html">
+
     </div>
     <!-- END #primary -->
 </div>
 
 <!--<script type="text/javascript" src="/front/js/marked.min.js"></script>-->
 <!--<script type="text/javascript" src="/front/js/jquery-3.1.0/jquery.min.js"></script>-->
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="/front/js/basicShare.0.2.min.js"></script>
-<!--<script src="/front/dist/main.js"></script>-->
-<script src="http://blogstore.b0.upaiyun.com/static/main.js"></script>
+<#--<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>-->
+<#--<script type="text/javascript" src="/front/js/basicShare.0.2.min.js"></script>-->
 
 </body>
 

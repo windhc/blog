@@ -14,30 +14,30 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/")
 public class HomeController {
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String home() {
-    return "/front/index.html";
-  }
+//  @RequestMapping(method = RequestMethod.GET)
+//  public String home() {
+//    return "/front/index.html";
+//  }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/front/archives/{id}")
-  public String detail() {
-    return "/front/article/detail.html";
-  }
-
-  @RequestMapping(method = RequestMethod.GET, value = "/front/category")
-  public String category() {
-    return "/front/article/category.html";
-  }
-
-  @RequestMapping(method = RequestMethod.GET, value = "/front/archives")
-  public String archives() {
-    return "/front/article/archive.html";
-  }
-
-  @RequestMapping(method = RequestMethod.GET, value = "/front/about")
-  public String about() {
-    return "/front/article/about.html";
-  }
+//  @RequestMapping(method = RequestMethod.GET, value = "/front/archives/{id}")
+//  public String detail() {
+//    return "/front/article/detail.html";
+//  }
+//
+//  @RequestMapping(method = RequestMethod.GET, value = "/front/category")
+//  public String category() {
+//    return "/front/article/category.html";
+//  }
+//
+//  @RequestMapping(method = RequestMethod.GET, value = "/front/archives")
+//  public String archives() {
+//    return "/front/article/archive.html";
+//  }
+//
+//  @RequestMapping(method = RequestMethod.GET, value = "/front/about")
+//  public String about() {
+//    return "/front/article/about.html";
+//  }
 
 
   @RequestMapping(method = RequestMethod.GET, value = "/login")
