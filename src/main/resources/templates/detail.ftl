@@ -6,9 +6,10 @@
     <meta id="viewport" name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <title>HC-${article.title}</title>
-    <link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">
-    <link rel="alternate" type="application/rss+xml" title="Hacker » 评论Feed"
-          href="http://demo.20theme.com/hacker/comments/feed">
+    <meta name="keywords" content="HC的个人博客，分享技术，分享经验，后端，前端，Java，Spring，经济生活"/>
+    <meta name="description" content="HC的个人博客，分享技术经验，欢迎大家共同讨论"/>
+    <#--<link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">-->
+    <#--<link rel="alternate" type="application/rss+xml" title="Hacker » 评论Feed" href="http://demo.20theme.com/hacker/comments/feed">-->
 
     <style type="text/css">
         img.wp-smiley,
@@ -63,7 +64,7 @@
                     <footer class="Article__footer">
                         <div class="Article__meta pull-left">
                             <span class="post-tags"><i class="icon-tags"></i>
-                                <a href="/category/${article.category.categoryId}" rel="tag">${article.category.categoryName}</a>
+                                <a href="/front/category/${article.category.categoryId}" rel="tag">${article.category.categoryName}</a>
                             </span>
                         </div>
                         <!-- END .pull-left -->

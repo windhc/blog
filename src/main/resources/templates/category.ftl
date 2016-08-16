@@ -6,24 +6,11 @@
     <meta id="viewport" name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <title>HC</title>
-    <link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">
-    <link rel="alternate" type="application/rss+xml" title="Hacker » 评论Feed"
-          href="http://demo.20theme.com/hacker/comments/feed">
+    <meta name="keywords" content="HC的个人博客，分享技术，分享经验，后端，前端，Java，Spring，经济生活"/>
+    <meta name="description" content="HC的个人博客，分享技术经验，欢迎大家共同讨论"/>
+<#--<link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">-->
+<#--<link rel="alternate" type="application/rss+xml" title="Hacker » 评论Feed" href="http://demo.20theme.com/hacker/comments/feed">-->
 
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
     <link rel="stylesheet" id="hacker-style-css" href="/front/css/style.css" type="text/css" media="all">
 </head>
 
