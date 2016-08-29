@@ -45,7 +45,9 @@
                         <a href="/front/article/${article.articleId}" rel="bookmark">
                             <span>${article.title}</span>
                         </a>
-                        <span class="sticky-mark" v-if="$index==0"></span>
+                        <#if article_index==0>
+                            <span class="sticky-mark"></span>
+                        </#if>
                     </h2>
                     <div class="Article__topMeta">
                         <span class="posted-on"><a rel="bookmark">
