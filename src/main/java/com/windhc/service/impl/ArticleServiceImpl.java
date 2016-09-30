@@ -58,4 +58,9 @@ public class ArticleServiceImpl implements ArticleService {
     article.setSummary(article.getContent().substring(0, length));
     return articleMapper.updateByIdSelective(article);
   }
+
+  @Override
+  public List<Article> findAllByCategoryId(long categoryId) {
+    return articleMapper.selectAllByCategoryAndDeleted(categoryId, false);
+  }
 }

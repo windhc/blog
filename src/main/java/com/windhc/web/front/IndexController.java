@@ -45,6 +45,14 @@ public class IndexController {
     return "category";
   }
 
+  @RequestMapping(method = RequestMethod.GET, value = {"/front/category/{categoryId}"})
+  public String getAllByCategoryId(@PathVariable long categoryId, ModelMap model) {
+    List<Article> articles = articleService.findAllByCategoryId(categoryId);
+    model.put("articles", articles);
+    model.put("category", categoryService.findById(categoryId));
+    return "category-article";
+  }
+
   @RequestMapping(method = RequestMethod.GET, value = {"/archives"})
   public String getAllArticle(@RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum, @RequestParam(name = "pageSize", required = false, defaultValue = "10") int pageSize, ModelMap model) {
     PageRequest pageRequest = new PageRequest(pageNum, pageSize);

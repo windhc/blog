@@ -2,6 +2,7 @@ package com.windhc.mapper;
 
 import com.windhc.domain.Article;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -26,4 +27,6 @@ public interface ArticleMapper {
   Article selectById(long id);
 
   List<Article> selectAllByDeleted(boolean deleted);
+
+  List<Article> selectAllByCategoryAndDeleted(@Param(value="categoryId") long categoryId, @Param(value="deleted") boolean deleted);
 }

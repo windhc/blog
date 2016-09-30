@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.windhc.domain.Article;
 import com.windhc.utils.PageRequest;
 
+import java.util.List;
+
 /**
  * Created by HC on 2016/6/19.
  */
@@ -18,4 +20,6 @@ public interface ArticleService {
   int updateToDeleted(long id);
 
   int update(Article article);
+
+  List<Article> findAllByCategoryId(long categoryId);
 }

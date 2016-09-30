@@ -41,5 +41,6 @@ dependencies {
 //    compile("mysql:mysql-connector-java")
 	compile("org.xerial:sqlite-jdbc:3.8.7")
     compile("com.github.pagehelper:pagehelper:4.1.6")
+    compile("tk.mybatis:mapper:3.3.6")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

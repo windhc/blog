@@ -5,7 +5,7 @@
 
     <meta id="viewport" name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <title>HC-关于我</title>
+    <title>HC-${category.categoryName}</title>
     <meta name="keywords" content="HC的个人博客，分享技术，分享经验，后端，前端，Java，Spring，经济生活"/>
     <meta name="description" content="HC的个人博客，分享技术经验，欢迎大家共同讨论"/>
     <#--<link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">-->
@@ -26,19 +26,17 @@
                 <article
                         class="Article post-62 post type-post status-publish format-image has-post-thumbnail hentry category-26 tag-28 post_format-post-format-image">
 
-                    <div style="margin-left:10%">
-                        <h3>简介</h3>
-                        <p>
-                            Java后端工程师，同时对Web前端及Android具有浓厚的兴趣 <br>
-                            博客使用Java+Springboot开发,欢迎<a href="https://github.com/jlkm2010/blog" target="_blank">查看源码</a>
-                        </p>
+                    <ul style="margin-left:10%">
+                        <#list articles as article>
+                        <li>
+                            <a href="/front/article/${article.articleId}">${article.title}</a>
+                            [<span>${article.category.categoryName}</span>]
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="time-text">${article.createTime?number_to_datetime?string('yyyy-MM-dd')}</span>
+                        </li>
+                        </#list>
+                    </ul>
 
-                        <h3>联系方式</h3>
-                        <ul>
-                            <li>GitHub: <a href="https://github.com/jlkm2010" target="_blank">地址</a></li>
-                            <li>Email: jlkmddl(at)gmail(dot)com</li>
-                        </ul>
-                    </div>
                 </article>
             </main>
         </div>

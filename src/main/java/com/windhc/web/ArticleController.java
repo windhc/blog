@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class ArticleController {
 
   @Autowired
-  ArticleService articleService;
+  private ArticleService articleService;
 
   @RequestMapping(method = RequestMethod.GET, value = {"/{id}", "/front/{id}"})
   public JsonView getById(@PathVariable long id) {

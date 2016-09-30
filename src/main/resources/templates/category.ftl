@@ -5,7 +5,7 @@
 
     <meta id="viewport" name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <title>HC</title>
+    <title>HC-文章分类</title>
     <meta name="keywords" content="HC的个人博客，分享技术，分享经验，后端，前端，Java，Spring，经济生活"/>
     <meta name="description" content="HC的个人博客，分享技术经验，欢迎大家共同讨论"/>
 <#--<link rel="alternate" type="application/rss+xml" title="Hacker » Feed" href="http://demo.20theme.com/hacker/feed">-->
@@ -28,7 +28,7 @@
                 <ul style="margin-left:10%">
                     <#list categories as category>
                     <li>
-                        <a>${category.categoryName}</a>
+                        <a href="/front/category/${category.categoryId}">${category.categoryName}</a>
                     </li>
                     </#list>
                 </ul>
