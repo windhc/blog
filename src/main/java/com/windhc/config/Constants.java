@@ -5,17 +5,17 @@ package com.windhc.config;
  */
 public class Constants {
 
-  public enum ArticleStatus {
-    Draft("草稿"), Publish("发布");
+    public enum ArticleStatus {
+        Draft("草稿"), Publish("发布");
 
-    private String name;
+        private String name;
 
-    ArticleStatus(String name){
-      this.name = name;
+        ArticleStatus(String name) {
+            this.name = name;
+        }
+
+        public String toString() {
+            return name;
+        }
     }
-
-    public String toString() {
-      return name;
-    }
-  }
 }

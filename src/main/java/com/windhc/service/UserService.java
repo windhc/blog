@@ -7,11 +7,11 @@ import com.windhc.domain.User;
  */
 public interface UserService {
 
-  User findOne(long id);
+    User findOne(long id);
 
-  User findByUsername(String username);
+    User findByUsername(String username);
 
-  int save(User user);
+    int save(User user);
 
-  int update(User user);
+    int update(User user);
 }

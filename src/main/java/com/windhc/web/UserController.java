@@ -22,41 +22,41 @@ import java.util.Map;
 @RequestMapping(value = "/user")
 public class UserController {
 
-  @Autowired
-  private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  @RequestMapping(method = RequestMethod.GET, value = "/test")
-  public User test() {
-    return userService.findOne(1);
-  }
-
-  @RequestMapping(method = RequestMethod.POST, value = "/login")
-  public String login() {
-    return "success";
-  }
-
-  @RequestMapping(method = RequestMethod.GET, value = "/info")
-  public Map info() {
-    Object principal = SecurityUtils.getSubject().getPrincipal();
-    Map<String, Object> map = new HashMap<>();
-    map.put("user", principal);
-    return map;
-  }
-
-  @RequestMapping(method = RequestMethod.POST, value = "/pwd")
-  public JsonView changePwd(@RequestBody ChangePasswordRequest request) {
-    User user = BaseUtils.currentUser();
-    if(!user.getPassword().equals(BaseUtils.md5(request.getOldPwd()))) {
-      return JsonView.fail("原密码错误");
+    @RequestMapping(method = RequestMethod.GET, value = "/test")
+    public User test() {
+        return userService.findOne(1);
     }
-    user.setPassword(BaseUtils.md5(request.getNewPwd()));
-    userService.update(user);
-    return JsonView.success("密码修改成功");
-  }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/pwd/verify")
-  public JsonView verifyPwd() {
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    public String login() {
+        return "success";
+    }
 
-    return JsonView.success();
-  }
+    @RequestMapping(method = RequestMethod.GET, value = "/info")
+    public Map info() {
+        Object principal = SecurityUtils.getSubject().getPrincipal();
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", principal);
+        return map;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/pwd")
+    public JsonView changePwd(@RequestBody ChangePasswordRequest request) {
+        User user = BaseUtils.currentUser();
+        if (!user.getPassword().equals(BaseUtils.md5(request.getOldPwd()))) {
+            return JsonView.fail("原密码错误");
+        }
+        user.setPassword(BaseUtils.md5(request.getNewPwd()));
+        userService.update(user);
+        return JsonView.success("密码修改成功");
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/pwd/verify")
+    public JsonView verifyPwd() {
+
+        return JsonView.success();
+    }
 }

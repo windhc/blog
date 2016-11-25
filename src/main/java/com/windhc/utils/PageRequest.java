@@ -5,46 +5,47 @@ package com.windhc.utils;
  */
 public class PageRequest {
 
-  private Integer pageNum;
+    private Integer pageNum;
 
-  private Integer pageSize;
+    private Integer pageSize;
 
-  private String orderBy;
+    private String orderBy;
 
-  public PageRequest(Integer pageNum, Integer pageSize, String orderBy) {
-    this.pageNum = pageNum;
-    this.pageSize = pageSize;
-    this.orderBy = orderBy;
-  }
+    public PageRequest(Integer pageNum, Integer pageSize, String orderBy) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+        this.orderBy = orderBy;
+    }
 
-  public PageRequest(Integer pageNum, Integer pageSize) {
-    this.pageNum = pageNum;
-    this.pageSize = pageSize;
-  }
+    public PageRequest(Integer pageNum, Integer pageSize) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+    }
 
-  public PageRequest(){}
+    public PageRequest() {
+    }
 
-  public Integer getPageNum() {
-    return pageNum;
-  }
+    public Integer getPageNum() {
+        return pageNum;
+    }
 
-  public void setPageNum(Integer pageNum) {
-    this.pageNum = pageNum;
-  }
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
 
-  public Integer getPageSize() {
-    return pageSize;
-  }
+    public Integer getPageSize() {
+        return pageSize;
+    }
 
-  public void setPageSize(Integer pageSize) {
-    this.pageSize = pageSize;
-  }
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 
-  public String getOrderBy() {
-    return orderBy;
-  }
+    public String getOrderBy() {
+        return orderBy;
+    }
 
-  public void setOrderBy(String orderBy) {
-    this.orderBy = orderBy;
-  }
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
 }

@@ -11,15 +11,15 @@ import java.util.List;
  */
 public interface ArticleService {
 
-  Article findById(long id);
+    Article findById(long id);
 
-  PageInfo findAll(PageRequest pageRequest);
+    PageInfo findAll(PageRequest pageRequest);
 
-  int save(Article article);
+    int save(Article article);
 
-  int updateToDeleted(long id);
+    int updateToDeleted(long id);
 
-  int update(Article article);
+    int update(Article article);
 
-  List<Article> findAllByCategoryId(long categoryId);
+    List<Article> findAllByCategoryId(long categoryId);
 }

@@ -17,43 +17,43 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-  @Autowired
-  private CategoryMapper categoryMapper;
+    @Autowired
+    private CategoryMapper categoryMapper;
 
-  @Override
-  public Category findById(long id) {
-    return categoryMapper.selectById(id);
-  }
+    @Override
+    public Category findById(long id) {
+        return categoryMapper.selectById(id);
+    }
 
-  @Override
-  public PageInfo findAll(PageRequest pageRequest) {
-    PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
-    List<Category> articles = categoryMapper.selectAll();
-    return new PageInfo(articles);
-  }
+    @Override
+    public PageInfo findAll(PageRequest pageRequest) {
+        PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
+        List<Category> articles = categoryMapper.selectAll();
+        return new PageInfo(articles);
+    }
 
-  @Override
-  public List<Category> findAll() {
-    return categoryMapper.selectAll();
-  }
+    @Override
+    public List<Category> findAll() {
+        return categoryMapper.selectAll();
+    }
 
-  @Override
-  public int save(Category category) {
-    return categoryMapper.insert(category);
-  }
+    @Override
+    public int save(Category category) {
+        return categoryMapper.insert(category);
+    }
 
-  @Override
-  public int delete(long id) {
-    return categoryMapper.deleteById(id);
-  }
+    @Override
+    public int delete(long id) {
+        return categoryMapper.deleteById(id);
+    }
 
-  @Override
-  public int update(Category category) {
-    return categoryMapper.updateByIdSelective(category);
-  }
+    @Override
+    public int update(Category category) {
+        return categoryMapper.updateByIdSelective(category);
+    }
 
-  @Override
-  public Category getOne(long id) {
-    return categoryMapper.selectById(id);
-  }
+    @Override
+    public Category getOne(long id) {
+        return categoryMapper.selectById(id);
+    }
 }

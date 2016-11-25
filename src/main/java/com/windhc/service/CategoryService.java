@@ -11,17 +11,17 @@ import java.util.List;
  */
 public interface CategoryService {
 
-  Category findById(long id);
+    Category findById(long id);
 
-  PageInfo findAll(PageRequest pageRequest);
+    PageInfo findAll(PageRequest pageRequest);
 
-  List<Category> findAll();
+    List<Category> findAll();
 
-  int save(Category category);
+    int save(Category category);
 
-  int delete(long id);
+    int delete(long id);
 
-  int update(Category category);
+    int update(Category category);
 
-  Category getOne(long id);
+    Category getOne(long id);
 }
