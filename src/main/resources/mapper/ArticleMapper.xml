@@ -62,7 +62,7 @@
 
     <insert id="insert" parameterType="com.windhc.domain.Article">
     insert into article (title, summary,status,
-      articleCreateTime, articleDeleted, category_id, 
+      articleCreateTime, articleDeleted, category_id,
       user_id, articleContent)
     values (#{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
       #{createTime,jdbcType=BIGINT}, #{deleted,jdbcType=BIT}, #{category.categoryId,jdbcType=INTEGER},

@@ -19,48 +19,47 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
-  @SuppressWarnings("SpringJavaAutowiringInspection")
-  @Autowired
-  ArticleMapper articleMapper;
+    @Autowired
+    ArticleMapper articleMapper;
 
-  @Override
-  public Article findById(long id) {
-    return articleMapper.selectById(id);
-  }
+    @Override
+    public Article findById(long id) {
+        return articleMapper.selectById(id);
+    }
 
-  @Override
-  public PageInfo findAll(PageRequest pageRequest) {
-    PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
-    List<Article> articles = articleMapper.selectAllByDeleted(false);
-    //用PageInfo对结果进行包装
-    return new PageInfo(articles);
-  }
+    @Override
+    public PageInfo findAll(PageRequest pageRequest) {
+        PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
+        List<Article> articles = articleMapper.selectAllByDeleted(false);
+        //用PageInfo对结果进行包装
+        return new PageInfo<>(articles);
+    }
 
-  @Override
-  public int save(Article article) {
-    int length = article.getContent().length() > 200 ? 200 : article.getContent().length();
-    article.setSummary(article.getContent().substring(0, length));
-    article.setStatus(Constants.ArticleStatus.Publish);
-    article.setUser(BaseUtils.currentUser());
-    return articleMapper.insert(article);
-  }
+    @Override
+    public int save(Article article) {
+        int length = article.getContent().length() > 200 ? 200 : article.getContent().length();
+        article.setSummary(article.getContent().substring(0, length));
+        article.setStatus(Constants.ArticleStatus.Publish);
+        article.setUser(BaseUtils.currentUser());
+        return articleMapper.insert(article);
+    }
 
-  @Override
-  public int updateToDeleted(long id) {
-    Article article = articleMapper.selectById(id);
-    article.setDeleted(true);
-    return articleMapper.updateById(article);
-  }
+    @Override
+    public int updateToDeleted(long id) {
+        Article article = articleMapper.selectById(id);
+        article.setDeleted(true);
+        return articleMapper.updateById(article);
+    }
 
-  @Override
-  public int update(Article article) {
-    int length = article.getContent().length() > 200 ? 200 : article.getContent().length();
-    article.setSummary(article.getContent().substring(0, length));
-    return articleMapper.updateByIdSelective(article);
-  }
+    @Override
+    public int update(Article article) {
+        int length = article.getContent().length() > 200 ? 200 : article.getContent().length();
+        article.setSummary(article.getContent().substring(0, length));
+        return articleMapper.updateByIdSelective(article);
+    }
 
-  @Override
-  public List<Article> findAllByCategoryId(long categoryId) {
-    return articleMapper.selectAllByCategoryAndDeleted(categoryId, false);
-  }
+    @Override
+    public List<Article> findAllByCategoryId(long categoryId) {
+        return articleMapper.selectAllByCategoryAndDeleted(categoryId, false);
+    }
 }

@@ -27,6 +27,7 @@ public class CommonMapperConfig {
     properties.setProperty("mappers", "tk.mybatis.mapper.common.Mapper");
 //    properties.setProperty("notEmpty", "false");
 //    properties.setProperty("IDENTITY", "MYSQL");
+    properties.setProperty("style", "normal");
     mapperScannerConfigurer.setProperties(properties);
     return mapperScannerConfigurer;
   }

@@ -1,5 +1,6 @@
 package com.windhc.mapper;
 
+import com.windhc.config.CommonMapper;
 import com.windhc.domain.Comment;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -7,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
  * Created by HC on 2016/6/20.
  */
 @Mapper
-public interface CommentMapper {
+public interface CommentMapper extends CommonMapper<Comment> {
 
   int deleteById(long commentid);
 

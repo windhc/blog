@@ -2,6 +2,9 @@ package com.windhc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -9,14 +12,18 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+  @Transient
   private static final long serialVersionUID = 1L;
 
+  @Id
+  @GeneratedValue(generator = "JDBC")
   private long userId;
   private String username;
   @JsonIgnore
   private String password;
   private String email;
 
+  @Transient
   private Role role;
 
   public long getUserId() {
