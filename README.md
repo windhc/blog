@@ -9,7 +9,13 @@ personal blog
 - 数据库使用的Sqlite
 
 # 使用
-首先需安装nodejs。
+首先需安装nodejs
+
+全局安装gulp
+```
+npm install -g gulp
+```
+
 
 进入src/main/resources/static目录，执行
 ```
