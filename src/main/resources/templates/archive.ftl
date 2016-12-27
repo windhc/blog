@@ -38,8 +38,12 @@
                     </ul>
 
                     <div style="margin-left:10%">
-                        <a href="javascript:void(0)" @click="perv()" id="perv">上一页</a>
-                        <a href="javascript:void(0)" @click="next()" id="next" style="margin-left:50%">下一页</a>
+                        <#if articles.hasPreviousPage>
+                            <a href="/archives?pageNum=${articles.prePage}" id="perv">上一页</a>
+                        </#if>
+                        <#if articles.hasNextPage>
+                            <a href="/archives?pageNum=${articles.nextPage}" id="next" style="margin-left:50%">下一页</a>
+                        </#if>
                     </div>
 
                 </article>

@@ -31,3 +31,4 @@ node_modules/
 **/js/build/
 
 keystore.p12
+application-dev.properties

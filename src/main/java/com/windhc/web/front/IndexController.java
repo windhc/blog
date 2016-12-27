@@ -54,7 +54,9 @@ public class IndexController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = {"/archives"})
-    public String getAllArticle(@RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum, @RequestParam(name = "pageSize", required = false, defaultValue = "10") int pageSize, ModelMap model) {
+    public String getAllArticle(@RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum,
+                                @RequestParam(name = "pageSize", required = false, defaultValue = "10") int pageSize,
+                                ModelMap model) {
         PageRequest pageRequest = new PageRequest(pageNum, pageSize);
         PageInfo pageInfo = articleService.findAll(pageRequest);
         model.put("articles", pageInfo);
