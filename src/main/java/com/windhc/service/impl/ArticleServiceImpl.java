@@ -1,5 +1,6 @@
 package com.windhc.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.windhc.config.Constants;
@@ -29,10 +30,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public PageInfo findAll(PageRequest pageRequest) {
-        PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
-        List<Article> articles = articleMapper.selectAllByDeleted(false);
+        Page<Article> page = PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize())
+                .doSelectPage(()-> articleMapper.selectAllByDeleted(false));
+
         //用PageInfo对结果进行包装
-        return new PageInfo<>(articles);
+        return page.toPageInfo();
     }
 
     @Override

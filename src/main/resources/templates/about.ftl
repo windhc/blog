@@ -36,7 +36,7 @@
                         <h3>联系方式</h3>
                         <ul>
                             <li>GitHub: <a href="https://github.com/jlkm2010" target="_blank">地址</a></li>
-                            <li>Email: jlkmddl(at)gmail(dot)com</li>
+                            <li>Email: jlkmddl(at)gmail.com</li>
                         </ul>
                     </div>
                 </article>

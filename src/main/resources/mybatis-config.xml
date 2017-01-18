@@ -44,11 +44,11 @@
             <property name="returnPageInfo" value="check"/>
         </plugin>
     </plugins>
-    <mappers>
-        <mapper resource="mapper/UserMapper.xml"/>
-        <mapper resource="mapper/RoleMapper.xml"/>
-        <mapper resource="mapper/ArticleMapper.xml"/>
-        <mapper resource="mapper/CategoryMapper.xml"/>
-        <mapper resource="mapper/CommentMapper.xml"/>
-    </mappers>
+    <!--<mappers>-->
+        <!--<mapper resource="mapper/UserMapper.xml"/>-->
+        <!--<mapper resource="mapper/RoleMapper.xml"/>-->
+        <!--<mapper resource="mapper/ArticleMapper.xml"/>-->
+        <!--<mapper resource="mapper/CategoryMapper.xml"/>-->
+        <!--<mapper resource="mapper/CommentMapper.xml"/>-->
+    <!--</mappers>-->
 </configuration>
