@@ -2,67 +2,53 @@ package com.windhc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
  * Created by HC on 2016/6/17.
  */
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
 
-  @Transient
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(generator = "JDBC")
-  private long userId;
-  private String username;
-  @JsonIgnore
-  private String password;
-  private String email;
+    private String username;
 
-  @Transient
-  private Role role;
+    @JsonIgnore
+    private String password;
 
-  public long getUserId() {
-    return userId;
-  }
+    private String email;
 
-  public void setUserId(long userId) {
-    this.userId = userId;
-  }
+    private Role role;
 
-  public String getUsername() {
-    return username;
-  }
+    public String getUsername() {
+        return username;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    public String getPassword() {
+        return password;
+    }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  public Role getRole() {
-    return role;
-  }
+    public Role getRole() {
+        return role;
+    }
 
-  public void setRole(Role role) {
-    this.role = role;
-  }
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

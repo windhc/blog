@@ -28,7 +28,7 @@
                 <ul style="margin-left:10%">
                     <#list categories as category>
                     <li>
-                        <a href="/front/category/${category.categoryId}">${category.categoryName}</a>
+                        <a href="/front/category/${category.id}">${category.categoryName}</a>
                     </li>
                     </#list>
                 </ul>

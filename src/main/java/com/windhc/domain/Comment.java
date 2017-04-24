@@ -1,40 +1,18 @@
 package com.windhc.domain;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-import java.time.Instant;
-
 /**
  * 评论
  * Created by HC on 2016/6/18.
  */
-public class Comment {
+public class Comment extends BaseEntity {
 
-    @Id
-    @GeneratedValue(generator = "JDBC")
-    private long commentId;
-    @Column(name = "commentContent")
     private String content;
     private String ip;
     private String username;
     private String email;
-    @Column(name = "commentCreateTime")
-    private long createTime = Instant.now().toEpochMilli();
-    @Column(name = "commentDeleted")
     private boolean deleted = false;
 
-    @Transient
     private Article article;
-
-    public long getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(long commentId) {
-        this.commentId = commentId;
-    }
 
     public String getContent() {
         return content;
@@ -42,14 +20,6 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
     }
 
     public boolean isDeleted() {

@@ -42,7 +42,7 @@
                 <article id="post-62"
                          class="Article post-62 post type-post status-publish format-image has-post-thumbnail sticky hentry category-26 tag-28 post_format-post-format-image">
                     <h2 class="Article__title">
-                        <a href="/front/article/${article.articleId}" rel="bookmark">
+                        <a href="/front/article/${article.id}" rel="bookmark">
                             <span>${article.title}</span>
                         </a>
                         <#if article_index==0>
@@ -65,7 +65,7 @@
                     <div class="Article__excerpt">
                         <p class="article-summary">${article.summary}</p>
 
-                        <a href="/front/article/${article.articleId}" class="more-link">继续阅读
+                        <a href="/front/article/${article.id}" class="more-link">继续阅读
                             <span class="screen-reader-text"></span>
                         </a>
                     </div>
@@ -73,7 +73,7 @@
                     <footer class="Article__footer">
                         <div class="Article__meta pull-left">
                             <span class="post-tags"><i class="icon-tags"></i>
-                                <a href="/front/category/${article.category.categoryId}" rel="tag">${article.category.categoryName}</a>
+                                <a href="/front/category/${article.category.id}" rel="tag">${article.category.categoryName}</a>
                             </span></div>
                         <!-- END .pull-left -->
                         <div class="Article__meta pull-right">

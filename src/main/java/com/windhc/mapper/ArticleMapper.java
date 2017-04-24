@@ -1,6 +1,6 @@
 package com.windhc.mapper;
 
-import com.windhc.config.CommonMapper;
+import com.piaoniu.pndao.annotations.DaoGen;
 import com.windhc.domain.Article;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,7 +11,8 @@ import java.util.List;
  * Created by HC on 2016/6/18.
  */
 @Mapper
-public interface ArticleMapper extends CommonMapper<Article> {
+@DaoGen
+public interface ArticleMapper {
 
     int insert(Article record);
 

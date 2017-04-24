@@ -64,7 +64,7 @@
                     <footer class="Article__footer">
                         <div class="Article__meta pull-left">
                             <span class="post-tags"><i class="icon-tags"></i>
-                                <a href="/front/category/${article.category.categoryId}" rel="tag">${article.category.categoryName}</a>
+                                <a href="/front/category/${article.category.id}" rel="tag">${article.category.categoryName}</a>
                             </span>
                         </div>
                         <!-- END .pull-left -->

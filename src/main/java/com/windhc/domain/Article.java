@@ -9,36 +9,21 @@ import java.util.List;
 /**
  * Created by HC on 2016/6/18.
  */
-@Table(name = "article")
-public class Article {
+public class Article extends BaseEntity {
 
-    @Id
-    @GeneratedValue(generator = "JDBC")
-    private Long articleId;
     private String title;
+
     private String summary;
-    @Column(name = "articleContent")
+
     private String content;
+
     private Constants.ArticleStatus status;
-    @Column(name = "articleCreateTime")
-    private long createTime = Instant.now().toEpochMilli();
-    @Column(name = "articleDeleted")
+
     private boolean deleted = false;
 
-    @Transient
     private Category category;
-    @Transient
     private User user;
-    @Transient
     private List<Comment> comments;
-
-    public long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(long articleId) {
-        this.articleId = articleId;
-    }
 
     public Constants.ArticleStatus getStatus() {
         return status;
@@ -70,14 +55,6 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
     }
 
     public boolean isDeleted() {

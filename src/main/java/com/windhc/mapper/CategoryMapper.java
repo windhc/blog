@@ -1,6 +1,6 @@
 package com.windhc.mapper;
 
-import com.windhc.config.CommonMapper;
+import com.piaoniu.pndao.annotations.DaoGen;
 import com.windhc.domain.Category;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +10,8 @@ import java.util.List;
  * Created by HC on 2016/6/20.
  */
 @Mapper
-public interface CategoryMapper extends CommonMapper<Category> {
+@DaoGen
+public interface CategoryMapper {
 
     int insert(Category record);
 

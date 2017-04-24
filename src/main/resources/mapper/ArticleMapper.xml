@@ -2,68 +2,90 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.windhc.mapper.ArticleMapper">
     <resultMap id="BaseResultMap" type="com.windhc.domain.Article">
-        <id column="articleId" jdbcType="INTEGER" property="articleId"/>
+        <id column="articleId" jdbcType="INTEGER" property="id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result column="articleCreateTime" jdbcType="BIGINT" property="createTime"/>
         <result column="articleDeleted" jdbcType="BIT" property="deleted"/>
-        <result column="category_id" jdbcType="INTEGER" property="category.categoryId"/>
-        <result column="user_id" jdbcType="INTEGER" property="user.userId"/>
+        <result column="category_id" jdbcType="INTEGER" property="category.id"/>
+        <result column="user_id" jdbcType="INTEGER" property="user.id"/>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.windhc.domain.Article">
         <result column="articleContent" jdbcType="VARCHAR" property="content"/>
     </resultMap>
     <!--返回包含内联对象-->
     <resultMap id="FullMap" type="com.windhc.domain.Article">
-        <id column="articleId" jdbcType="INTEGER" property="articleId"/>
+        <id column="articleId" jdbcType="INTEGER" property="id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="summary" jdbcType="VARCHAR" property="summary"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result column="articleCreateTime" jdbcType="BIGINT" property="createTime"/>
         <result column="articleDeleted" jdbcType="BIT" property="deleted"/>
         <association column="category_id" property="category" javaType="com.windhc.domain.Category"
-                     resultMap="com.windhc.mapper.CategoryMapper.BaseResultMap"></association>
+                     resultMap="com.windhc.mapper.CategoryMapper.BaseResultMap"/>
         <association column="user_id" property="user" javaType="com.windhc.domain.User"
-                     resultMap="com.windhc.mapper.UserMapper.BaseResultMap"></association>
+                     resultMap="com.windhc.mapper.UserMapper.BaseResultMap"/>
     </resultMap>
     <resultMap extends="FullMap" id="FullMapWithBLOBs" type="com.windhc.domain.Article">
         <result column="articleContent" jdbcType="VARCHAR" property="content"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-    articleId, title, summary, status, articleCreateTime, articleDeleted, category_id, user_id
-  </sql>
+        article.id         articleId,
+        title,
+        summary,
+        status,
+        article.createTime articleCreateTime,
+        article.deleted    articleDeleted,
+        category_id,
+        user_id
+    </sql>
+
     <sql id="Blob_Column_List">
-    articleContent
-  </sql>
+      article.content  articleContent
+    </sql>
 
     <select id="selectById" parameterType="java.lang.Long" resultMap="FullMapWithBLOBs">
-    select *
+    select
+        <include refid="Base_Column_List" />,
+        <include refid="Blob_Column_List" />,
+        <include refid="com.windhc.mapper.CategoryMapper.Base_Column_List" />,
+        <include refid="com.windhc.mapper.UserMapper.Base_Column_List" />
     from article, category, user
-    where articleId = #{articleId,jdbcType=INTEGER} and article.category_id=category.categoryId and article.user_id=user.userId
+    where article.id = #{id,jdbcType=INTEGER} and article.category_id=category.id and article.user_id=user.id
   </select>
 
     <select id="selectAllByDeleted" resultMap="FullMap" parameterType="java.lang.Boolean">
-    select * from article,category,user
-    WHERE articleDeleted=#{deleted,jdbcType=BIT}
-    AND article.category_id=category.categoryId AND article.user_id=user.userId ORDER BY article.articleCreateTime DESC
+    select
+        <include refid="Base_Column_List" />,
+        <include refid="Blob_Column_List" />,
+        <include refid="com.windhc.mapper.CategoryMapper.Base_Column_List" />,
+        user.id  userId, user.username
+    from article, category, user
+    WHERE deleted=#{deleted,jdbcType=BIT}
+    AND article.category_id=category.id AND article.user_id=user.id ORDER BY article.createTime DESC
   </select>
 
     <select id="selectAllByCategoryAndDeleted" resultMap="FullMap">
-        select * from article,category,user
-        WHERE article.category_id=#{categoryId,jdbcType=INTEGER} AND articleDeleted=#{deleted,jdbcType=BIT}
-        AND article.category_id=category.categoryId AND article.user_id=user.userId ORDER BY article.articleCreateTime DESC
+        select
+            <include refid="Base_Column_List" />,
+            <include refid="Blob_Column_List" />,
+            <include refid="com.windhc.mapper.CategoryMapper.Base_Column_List" />,
+            user.id  userId, user.username
+        from article, category, user
+        WHERE article.category_id=#{id,jdbcType=INTEGER} AND deleted=#{deleted,jdbcType=BIT}
+        AND article.category_id=category.id AND article.user_id=user.id ORDER BY article.createTime DESC
     </select>
 
     <delete id="deleteById" parameterType="java.lang.Long">
     delete from article
-    where articleId = #{articleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
 
     <insert id="insert" parameterType="com.windhc.domain.Article">
     insert into article (title, summary,status,
-      articleCreateTime, articleDeleted, category_id,
-      user_id, articleContent)
+      createTime, deleted, category_id,
+      user_id, content)
     values (#{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
       #{createTime,jdbcType=BIGINT}, #{deleted,jdbcType=BIT}, #{category.categoryId,jdbcType=INTEGER},
       #{user.userId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
@@ -72,8 +94,8 @@
     <insert id="insertSelective" parameterType="com.windhc.domain.Article">
         insert into article
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="articleId != null">
-                articleId,
+            <if test="id != null">
+                id,
             </if>
             <if test="title != null">
                 title,
@@ -85,10 +107,10 @@
                 status,
             </if>
             <if test="createTime != null">
-                articleCreateTime,
+                createTime,
             </if>
             <if test="deleted != null">
-                articleDeleted,
+                deleted,
             </if>
             <if test="category != null">
                 category_id,
@@ -97,12 +119,12 @@
                 user_id,
             </if>
             <if test="content != null">
-                articleContent,
+                content,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="articleId != null">
-                #{articleId,jdbcType=INTEGER},
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
             </if>
             <if test="title != null">
                 #{title,jdbcType=VARCHAR},
@@ -120,10 +142,10 @@
                 #{deleted,jdbcType=BIT},
             </if>
             <if test="category != null">
-                #{category.categoryId,jdbcType=INTEGER},
+                #{category.id,jdbcType=INTEGER},
             </if>
             <if test="user != null">
-                #{user.userId,jdbcType=INTEGER},
+                #{user.id,jdbcType=INTEGER},
             </if>
             <if test="content != null">
                 #{content,jdbcType=LONGVARCHAR},
@@ -144,22 +166,22 @@
                 status = #{status,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
-                articleCreateTime = #{createTime,jdbcType=BIGINT},
+                createTime = #{createTime,jdbcType=BIGINT},
             </if>
             <if test="deleted != null">
-                articleDeleted = #{deleted,jdbcType=BIT},
+                deleted = #{deleted,jdbcType=BIT},
             </if>
             <if test="category != null">
-                category_id = #{category.categoryId,jdbcType=INTEGER},
+                category_id = #{category.id,jdbcType=INTEGER},
             </if>
             <if test="user != null">
-                user_id = #{user.userId,jdbcType=INTEGER},
+                user_id = #{user.id,jdbcType=INTEGER},
             </if>
             <if test="content != null">
                 articleContent = #{content,jdbcType=LONGVARCHAR},
             </if>
         </set>
-        where articleId = #{articleId,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="updateByIdWithBLOBs" parameterType="com.windhc.domain.Article">
@@ -167,12 +189,12 @@
     set title = #{title,jdbcType=VARCHAR},
       summary = #{summary,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      articleCreateTime = #{createTime,jdbcType=BIGINT},
-      articleDeleted = #{deleted,jdbcType=BIT},
-      category_id = #{category.categoryId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=BIGINT},
+      deleted = #{deleted,jdbcType=BIT},
+      category_id = #{category.id,jdbcType=INTEGER},
       user_id = #{user.userId,jdbcType=INTEGER},
-      articleContent = #{content,jdbcType=LONGVARCHAR}
-    where articleId = #{articleId,jdbcType=INTEGER}
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 
     <update id="updateById" parameterType="com.windhc.domain.Article">
@@ -180,10 +202,10 @@
     set title = #{title,jdbcType=VARCHAR},
       summary = #{summary,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      articleCreateTime = #{createTime,jdbcType=BIGINT},
-      articleDeleted = #{deleted,jdbcType=BIT},
+      createTime = #{createTime,jdbcType=BIGINT},
+      deleted = #{deleted,jdbcType=BIT},
       category_id = #{category.categoryId,jdbcType=INTEGER},
       user_id = #{user.userId,jdbcType=INTEGER}
-    where articleId = #{articleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

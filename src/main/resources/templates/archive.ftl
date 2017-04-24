@@ -29,7 +29,7 @@
                     <ul style="margin-left:10%">
                         <#list articles.list as article>
                         <li>
-                            <a href="/front/article/${article.articleId}">${article.title}</a>
+                            <a href="/front/article/${article.id}">${article.title}</a>
                             [<span>${article.category.categoryName}</span>]
                             &nbsp;&nbsp;&nbsp;
                             <span class="time-text">${article.createTime?number_to_datetime?string('yyyy-MM-dd')}</span>
