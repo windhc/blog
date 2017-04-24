@@ -34,14 +34,14 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="category in categories">
-                                <td ng-bind="category.categoryId"></td>
+                                <td ng-bind="category.id"></td>
                                 <td>
-                                    <a ng-href="#/category/{{category.categoryId}}" class="tableLink"
+                                    <a ng-href="#/category/{{category.id}}" class="tableLink"
                                        ng-bind="category.categoryName"></a>
                                 </td>
                                 <td>
-                                    <a ng-click="openEdit(category.categoryId)">编辑</a>
-                                    <a ng-click="delete(category.categoryId)">删除</a>
+                                    <a ng-click="openEdit(category.id)">编辑</a>
+                                    <a ng-click="delete(category.id)">删除</a>
                                 </td>
                             </tr>
                             </tbody>

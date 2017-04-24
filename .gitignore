@@ -23,6 +23,7 @@ gen
 gradle/
 .gradle/
 build/
+classes/
 node_modules/
 
 **/front/config/
