@@ -3,8 +3,6 @@
  */
 'use strict';
 
-var BlogApp = require('../../js/admin/app.js');
-
 BlogApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/article', {

@@ -4,9 +4,10 @@
 //angular = require('angular');
 
 var BlogApp = angular.module('BlogApp', [
-    require('angular-route'),
-    require('angular-ui-bootstrap/src/pagination'),
-    require('angular-marked')
+    'common',
+    'ngRoute',
+    'ui.bootstrap.pagination',
+    'hc.marked'
 ]);
 
-module.exports = BlogApp;
+// module.exports = BlogApp;

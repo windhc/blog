@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
  * Created by HC on 2016/6/17.
  */
 @Mapper
-@DaoGen
 public interface UserMapper {
 
     int deleteById(Integer userid);

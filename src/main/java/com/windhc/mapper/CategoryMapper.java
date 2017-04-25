@@ -10,7 +10,6 @@ import java.util.List;
  * Created by HC on 2016/6/20.
  */
 @Mapper
-@DaoGen
 public interface CategoryMapper {
 
     int insert(Category record);

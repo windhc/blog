@@ -1,8 +1,6 @@
 'use strict';
 
-var BlogApp = require('./app.js');
-
-BlogApp
+angular.module('common', [])
     .factory('httpInterceptor', [ '$q', '$injector',function($q, $injector) {
         return {
             'responseError' : function(response) {
@@ -107,7 +105,7 @@ BlogApp
     ])
     .controller('NavCtrl', ["$scope", "$http",
         function ($scope, $http) {
-            $http.get("/user/info").success(function (data) {
+            $http.get("/user/info").then(function (data) {
                 $scope.info = data;
             })
         }

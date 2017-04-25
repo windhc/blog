@@ -3,8 +3,6 @@
  */
 'use strict';
 
-var BlogApp = require('../../js/admin/app.js');
-
 BlogApp
     .controller('ArticleCtrl', ['$scope', 'ArticleService', 'CommonService',
         function($scope, ArticleService, CommonService) {
@@ -15,7 +13,7 @@ BlogApp
             $scope.pageSize = 10 ;   //每页大小
             function getPageData() {
                 $scope.params = "pageSize="+$scope.pageSize+"&pageNum="+($scope.currentPage);
-                ArticleService.listArticle($scope.params).success(function (data) {
+                ArticleService.listArticle($scope.params).then(function (data) {
                     $scope.articles = data.data.list;
                     $scope.totalItems = data.data.total;
                 });
@@ -26,7 +24,7 @@ BlogApp
             };
             $scope.delete = function (id) {
                 CommonService.confirm("确定删除？", function () {
-                    ArticleService.delete(id).success(function (data) {
+                    ArticleService.delete(id).then(function (data) {
                         CommonService.show(data);
                         getPageData();
                     })
@@ -36,13 +34,13 @@ BlogApp
     ])
     .controller('ArticleAddCtrl', ['$scope', '$location', 'ArticleService', 'CommonService',
         function($scope, $location, ArticleService, CommonService) {
-            ArticleService.allCategory().success(function (data) {
+            ArticleService.allCategory().then(function (data) {
                 $scope.categories = data.data;
             });
 
             $scope.article = {};
             $scope.add = function () {
-                ArticleService.save($scope.article).success(function (data) {
+                ArticleService.save($scope.article).then(function (data) {
                     CommonService.show(data);
                     $location.path('/article');
                 })
@@ -54,12 +52,12 @@ BlogApp
             ArticleService.allCategory().success(function (data) {
                 $scope.categories = data.data;
             });
-            ArticleService.getOne($routeParams.id).success(function (data) {
+            ArticleService.getOne($routeParams.id).then(function (data) {
                 $scope.article = data.data;
             });
 
             $scope.save = function () {
-                ArticleService.update($scope.article).success(function (data) {
+                ArticleService.update($scope.article).then(function (data) {
                     CommonService.show(data);
                     $location.path('/article');
                 })
@@ -68,7 +66,7 @@ BlogApp
     ])
     .controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'ArticleService',
         function($scope, $routeParams, ArticleService) {
-            ArticleService.getOne($routeParams.id).success(function (data) {
+            ArticleService.getOne($routeParams.id).then(function (data) {
                 $scope.article = data.data;
             });
         }

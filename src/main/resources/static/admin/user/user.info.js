@@ -3,8 +3,6 @@
  */
 'use strict';
 
-var BlogApp = require('../../js/admin/app.js');
-
 BlogApp
     .controller('PwdCtrl', ['$scope', '$location', 'UserService', 'CommonService',
         function($scope, $location, UserService, CommonService) {
@@ -15,7 +13,7 @@ BlogApp
                     CommonService.showError("两次密码输入的不一致");
                     return;
                 }
-                UserService.savePwd($scope.cp).success(function (data) {
+                UserService.savePwd($scope.cp).then(function (data) {
                     CommonService.show(data);
                     $location.path('/article');
                 })

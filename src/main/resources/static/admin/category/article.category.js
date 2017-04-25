@@ -3,8 +3,6 @@
  */
 'use strict';
 
-var BlogApp = require('../../js/admin/app.js');
-
 BlogApp
     .controller('CategoryCtrl', ['$scope', 'ArticleService', 'CommonService',
         function($scope, ArticleService, CommonService) {
@@ -15,7 +13,7 @@ BlogApp
             $scope.pageSize = 10 ;   //每页大小
             function getPageData() {
                 $scope.params = "pageSize="+$scope.pageSize+"&pageNum="+($scope.currentPage);
-                ArticleService.listCategory($scope.params).success(function (data) {
+                ArticleService.listCategory($scope.params).then(function (data) {
                     $scope.categories = data.data.list;
                     $scope.totalItems = data.data.total;
                 });
@@ -26,7 +24,7 @@ BlogApp
             };
             $scope.delete = function (id) {
                 CommonService.confirm("确定删除？", function () {
-                    ArticleService.deleteCategory(id).success(function (data) {
+                    ArticleService.deleteCategory(id).then(function (data) {
                         CommonService.show(data);
                         getPageData();
                     })
@@ -34,7 +32,7 @@ BlogApp
             };
 
             $scope.save = function () {
-                ArticleService.saveCategory($scope.category).success(function (data) {
+                ArticleService.saveCategory($scope.category).then(function (data) {
                     CommonService.show(data);
                     $('#addModal').modal('toggle');
                     getPageData();
@@ -43,7 +41,7 @@ BlogApp
 
             // 打开修改模态框
             $scope.openEdit = function (id) {
-                ArticleService.getCategory(id).success(function (data) {
+                ArticleService.getCategory(id).then(function (data) {
                     $('#editModal').modal('show');
                     $scope.category = data.data;
                 })
@@ -51,7 +49,7 @@ BlogApp
 
             // 修改分类
             $scope.update = function (id) {
-                ArticleService.updateCategory($scope.category).success(function (data) {
+                ArticleService.updateCategory($scope.category).then(function (data) {
                     CommonService.show(data);
                     $('#editModal').modal('toggle');
                     getPageData();

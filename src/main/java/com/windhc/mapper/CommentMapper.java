@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
  * Created by HC on 2016/6/20.
  */
 @Mapper
-@DaoGen
 public interface CommentMapper {
 
     int deleteById(long commentid);

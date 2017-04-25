@@ -11,7 +11,6 @@ import java.util.List;
  * Created by HC on 2016/6/18.
  */
 @Mapper
-@DaoGen
 public interface ArticleMapper {
 
     int insert(Article record);

@@ -28,7 +28,6 @@ node_modules/
 
 **/front/config/
 **/front/dist/
-**/dist/
 **/js/build/
 
 keystore.p12

@@ -1,7 +1,5 @@
 'use strict';
 
-var BlogApp = require('./app.js');
-
 /**
  * pageTitle - Directive for set Page title - mata title
  * 取出具体页面的title赋值主页的title
