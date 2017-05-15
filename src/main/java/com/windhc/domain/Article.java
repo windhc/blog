@@ -1,10 +1,7 @@
 package com.windhc.domain;
 
-import com.windhc.config.Constants;
-
-import javax.persistence.*;
-import java.time.Instant;
 import java.util.List;
+import com.windhc.config.Constants;
 
 /**
  * Created by HC on 2016/6/18.
@@ -18,6 +15,10 @@ public class Article extends BaseEntity {
     private String content;
 
     private Constants.ArticleStatus status;
+
+    private Long categoryId;
+
+    private Long userId;
 
     private boolean deleted = false;
 
@@ -55,6 +56,22 @@ public class Article extends BaseEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public boolean isDeleted() {

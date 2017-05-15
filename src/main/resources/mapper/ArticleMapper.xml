@@ -87,8 +87,8 @@
       createTime, deleted, category_id,
       user_id, content)
     values (#{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
-      #{createTime,jdbcType=BIGINT}, #{deleted,jdbcType=BIT}, #{category.categoryId,jdbcType=INTEGER},
-      #{user.userId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+      #{createTime,jdbcType=BIGINT}, #{deleted,jdbcType=BIT}, #{category.id,jdbcType=INTEGER},
+      #{user.id,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
 
     <insert id="insertSelective" parameterType="com.windhc.domain.Article">
@@ -178,7 +178,7 @@
                 user_id = #{user.id,jdbcType=INTEGER},
             </if>
             <if test="content != null">
-                articleContent = #{content,jdbcType=LONGVARCHAR},
+                content = #{content,jdbcType=LONGVARCHAR},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
@@ -204,8 +204,8 @@
       status = #{status,jdbcType=VARCHAR},
       createTime = #{createTime,jdbcType=BIGINT},
       deleted = #{deleted,jdbcType=BIT},
-      category_id = #{category.categoryId,jdbcType=INTEGER},
-      user_id = #{user.userId,jdbcType=INTEGER}
+      category_id = #{category.id,jdbcType=INTEGER},
+      user_id = #{user.id,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

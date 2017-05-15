@@ -1,12 +1,16 @@
 package com.windhc.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageInfo;
 import com.windhc.domain.Article;
 import com.windhc.service.ArticleService;
 import com.windhc.utils.JsonView;
 import com.windhc.utils.PageRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by HC on 2016/6/19.
@@ -38,6 +42,7 @@ public class ArticleController {
 
     @RequestMapping(method = RequestMethod.POST, value = "")
     public JsonView save(@RequestBody Article article) {
+        article.setCategoryId(article.getCategory().getId());
         articleService.save(article);
         return JsonView.success();
     }

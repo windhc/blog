@@ -20,7 +20,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        user.id  userId, username, password, email
+        user.id userId, username, password, email
     </sql>
 
     <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -35,7 +35,11 @@
     </select>
 
     <select id="findByUsername" parameterType="java.lang.String" resultMap="UserRoleMap">
-        select * from user, role where user.username=#{username} and user.role_id=role.id
+        select
+        <include refid="Base_Column_List"/>,
+        role.id  roleId,
+        roleName
+        from user, role where user.username=#{username} and user.role_id=role.id
     </select>
 
     <delete id="deleteById" parameterType="java.lang.Integer">

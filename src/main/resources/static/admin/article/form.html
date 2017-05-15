@@ -4,8 +4,8 @@
 </div>
 <div class="form-group">
     <label for="category">分类</label>
-    <select name="category" id="category" class="form-control" ng-model="article.category.categoryId" required
-            ng-options="category.categoryId as category.categoryName for category in categories">
+    <select name="category" id="category" class="form-control" ng-model="article.category" required
+            ng-options="category as category.categoryName for category in categories">
     </select>
 </div>
 <div>
