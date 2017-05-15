@@ -18,7 +18,7 @@
                 <div class="ibox-title">
                     <h5>{{totalItems}}篇文章</h5>
                     <div class="ibox-tools">
-                        <a href="#/article/add" class="btn btn-primary btn-xs">添加</a>
+                        <a href="#!/article/add" class="btn btn-primary btn-xs">添加</a>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -52,14 +52,14 @@
                         <tr ng-repeat="article in articles">
                             <td ng-bind="article.id"></td>
                             <td>
-                                <a ng-href="#/article/{{article.id}}/detail" class="tableLink"
+                                <a ng-href="#!/article/{{article.id}}/detail" class="tableLink"
                                    ng-bind="article.title"></a>
                             </td>
                             <td ng-bind="article.category.categoryName"></td>
                             <td ng-bind="article.createTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
                             <td ng-bind="article.status"></td>
                             <td>
-                                <a ng-href="#/article/{{article.id}}/edit">编辑</a>
+                                <a ng-href="#!/article/{{article.id}}/edit">编辑</a>
                                 <a ng-click="delete(article.id)">删除</a>
                             </td>
                         </tr>

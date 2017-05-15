@@ -13,9 +13,9 @@ BlogApp
             $scope.pageSize = 10 ;   //每页大小
             function getPageData() {
                 $scope.params = "pageSize="+$scope.pageSize+"&pageNum="+($scope.currentPage);
-                ArticleService.listArticle($scope.params).then(function (data) {
-                    $scope.articles = data.data.list;
-                    $scope.totalItems = data.data.total;
+                ArticleService.listArticle($scope.params).then(function (response) {
+                    $scope.articles = response.data.data.list;
+                    $scope.totalItems = response.data.data.total;
                 });
             }
             getPageData();
@@ -24,8 +24,8 @@ BlogApp
             };
             $scope.delete = function (id) {
                 CommonService.confirm("确定删除？", function () {
-                    ArticleService.delete(id).then(function (data) {
-                        CommonService.show(data);
+                    ArticleService.delete(id).then(function (response) {
+                        CommonService.show(response.data);
                         getPageData();
                     })
                 })
@@ -34,14 +34,14 @@ BlogApp
     ])
     .controller('ArticleAddCtrl', ['$scope', '$location', 'ArticleService', 'CommonService',
         function($scope, $location, ArticleService, CommonService) {
-            ArticleService.allCategory().then(function (data) {
-                $scope.categories = data.data;
+            ArticleService.allCategory().then(function (response) {
+                $scope.categories = response.data.data;
             });
 
             $scope.article = {};
             $scope.add = function () {
-                ArticleService.save($scope.article).then(function (data) {
-                    CommonService.show(data);
+                ArticleService.save($scope.article).then(function (response) {
+                    CommonService.show(response.data);
                     $location.path('/article');
                 })
             }
@@ -49,16 +49,16 @@ BlogApp
     ])
     .controller('ArticleEditCtrl', ['$scope', '$location', '$routeParams', 'ArticleService', 'CommonService',
         function($scope, $location, $routeParams, ArticleService, CommonService) {
-            ArticleService.allCategory().success(function (data) {
-                $scope.categories = data.data;
+            ArticleService.allCategory().then(function (response) {
+                $scope.categories = response.data.data;
             });
-            ArticleService.getOne($routeParams.id).then(function (data) {
-                $scope.article = data.data;
+            ArticleService.getOne($routeParams.id).then(function (response) {
+                $scope.article = response.data.data;
             });
 
             $scope.save = function () {
-                ArticleService.update($scope.article).then(function (data) {
-                    CommonService.show(data);
+                ArticleService.update($scope.article).then(function (response) {
+                    CommonService.show(response.data);
                     $location.path('/article');
                 })
             }
@@ -66,8 +66,8 @@ BlogApp
     ])
     .controller('ArticleDetailCtrl', ['$scope', '$routeParams', 'ArticleService',
         function($scope, $routeParams, ArticleService) {
-            ArticleService.getOne($routeParams.id).then(function (data) {
-                $scope.article = data.data;
+            ArticleService.getOne($routeParams.id).then(function (response) {
+                $scope.article = response.data.data;
             });
         }
     ]);
