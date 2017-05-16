@@ -32,3 +32,4 @@ node_modules/
 
 keystore.p12
 application-dev.properties
+blog.db
